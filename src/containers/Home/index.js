@@ -5,7 +5,6 @@ const Home = () => {
     return(
         <> 
             <NavComponent></NavComponent>
-            <div>Welcome to the DEV React starter!</div>
         </>
     )
 

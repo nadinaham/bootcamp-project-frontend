@@ -5,6 +5,8 @@ import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import client from './client'
 import Home from './containers/Home'
+import Register from './containers/Register'
+import Login from './containers/Login'
 
 const App = () => (
   <Router>
@@ -13,6 +15,8 @@ const App = () => (
         <div className="App">
           <Switch>
             <Route path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
           </Switch>
         </div>
       </ApolloProvider>

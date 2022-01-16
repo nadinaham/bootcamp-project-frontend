@@ -9,6 +9,8 @@ const theme = {
     lblue: '#D6EFFF',
     white: '#FEFEFF',
     brown: '#794901',
+    submit: '#4CAF50',
+    submithover: '#449C47'
   },
   fonts: {},
 }

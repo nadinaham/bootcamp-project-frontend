@@ -5,7 +5,7 @@ import { SiteHeader, NavItem, Nav } from './styles'
 const NavComponent = ( input ) => {
     return(
     <>
-        <SiteHeader>We need a name for this thing.exe</SiteHeader>
+        <SiteHeader>Bookify</SiteHeader>
         <Nav>
             <NavItem> <strong> Home </strong> </NavItem>
             <NavItem> <strong>Temp item 1</strong></NavItem>
