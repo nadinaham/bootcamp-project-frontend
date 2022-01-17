@@ -1,17 +1,19 @@
 import React from 'react'
-import { Card, Container } from './styles'
+import { Background, Card, Container } from './styles'
 
-const CardComponent = (content) => {
-    return(
+const CardComponent = content => {
+  return (
     <>
-    <Container>
-        <Card>
+      <Background>
+        <Container>
+          <Card>
             {content.content}
-        </Card>
-    </Container>
-
+          </Card>
+        </Container>
+      </Background>
     </>
-    )
+  )
 }
 
 export default CardComponent
+ 
