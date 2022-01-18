@@ -20,10 +20,10 @@ export const Nav = styled.nav`
   background-color: ${props => props.theme.colors.header};
   text-align: center;
   height: 4vh;
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  padding: 0px 0px; // Can't decide whether I want some vertical padding or not, careful with horizontal padding and breaking 100% width
 `
 
 export const NavItem = styled.div `
@@ -33,7 +33,6 @@ export const NavItem = styled.div `
   text-shadow: 1px 1px 1px #aaa;
   font-size: 20px;
   color: ${props => props.theme.colors.brown};
-
   &:hover{
     box-shadow: 0px -6px ${props => props.theme.colors.brown} inset;
   }
