@@ -20,44 +20,9 @@ const Library = () => {
 
   // add books to current reading - TODO w/ apollo hooks
 
-  // remove ALL library books
-  const handleLibraryClear = () => {
-    const filtered = library.filter(book => {
-      return !book
-    })
-    setLibrary(filtered)
-  }
-  // will remove ALL bookmarks
-  const handleBookmarkClear = () => {
-    const filtered = bookmarks.filter(book => {
-      return !book
-    })
-    setBookmarks(filtered)
-  }
+  // deletion also done on hooks
 
-  // will remove currently reading book
-  const handleCurrentClear = () => {
-    const filtered = current.filter(book => {
-      return !book
-    })
-    setCurrent(filtered)
-  }
-
-  // will delete individual book from library
-  const handleDelete = (id) => {
-    const filtered = library.filter(book => {
-      return book.id !== id
-    })
-    setLibrary(filtered)
-  }
-
-  // will delete individual book from bookmarks
-  const handleBookmarkDelete = (id) => {
-    const filtered = bookmarks.filter(book => {
-      return book.id !== id
-    })
-    setBookmarks(filtered)
-  }
+  // searching can be done on front end, will add that in a bit
 
   return (
       // content part to-do, for now the functions are implemented - will likely later implement BookList and Book components for each list and individual book
