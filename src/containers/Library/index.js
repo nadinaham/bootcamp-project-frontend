@@ -1,3 +1,6 @@
+// LIBRARY: should contain books that you have already read, are currently reading, and will read (bookmarked)
+// Also Apollo hooks should be fairly quick to implement
+
 import React, { useState } from 'react'
 import CardComponent from '../../components/CardComponent'
 import NavComponent from '../../components/NavComponent'
@@ -5,23 +8,26 @@ import DeleteButtonComponent from '../../components/DeleteButtonComponent'
 
 const Library = () => {
   // Load up library data from backend
-  const [ bookList, setBookList ] = useState(data)
+  const [ library, setLibrary ] = useState('todo w/ apollo hooks')
   // Load up bookmarks data from backend
-  const [ bookmarks, setBookmarks ] = useState(data)
-  // For search function in library
-  const [ searchInput, setInput ] = useState('')
-  // For search function in bookmarked
-  const [ searchBookmarks, setSearchBookmarks ] = useState('')
+  const [ bookmarks, setBookmarks ] = useState('todo')
+  // Load up currently reading data from backend
+  const [ current, setCurrent] = useState('todo')
 
-  // will remove all library books
+  // add books to library - TODO w/ apollo hooks
+
+  // add books to bookmark - TODO w/ apollo hooks
+
+  // add books to current reading - TODO w/ apollo hooks
+
+  // remove ALL library books
   const handleLibraryClear = () => {
-    const filtered = bookList.filter(book => {
+    const filtered = library.filter(book => {
       return !book
     })
-    setBookList(filtered)
+    setLibrary(filtered)
   }
-
-  // will remove all bookmarks
+  // will remove ALL bookmarks
   const handleBookmarkClear = () => {
     const filtered = bookmarks.filter(book => {
       return !book
@@ -29,26 +35,20 @@ const Library = () => {
     setBookmarks(filtered)
   }
 
-  // will add books to library
-  const handleAdd = (userInput) => {
-    let add = [...bookList]
-    add = [...add, { id: uuidv4(), task: userInput, complete: false }]
-    setBookList(add)
-  }
-
-  // will add books to bookmark
-  const handleBookmark = (userInput) => {
-    let add = [...bookmarks]
-    add = [...add, {id: uuidv4(), task: userInput, complete: false }]
-    setBookmarks(add)
+  // will remove currently reading book
+  const handleCurrentClear = () => {
+    const filtered = current.filter(book => {
+      return !book
+    })
+    setCurrent(filtered)
   }
 
   // will delete individual book from library
   const handleDelete = (id) => {
-    const filtered = bookList.filter(book => {
+    const filtered = library.filter(book => {
       return book.id !== id
     })
-    setBookList(filtered)
+    setLibrary(filtered)
   }
 
   // will delete individual book from bookmarks
@@ -60,6 +60,7 @@ const Library = () => {
   }
 
   return (
+      // content part to-do, for now the functions are implemented - will likely later implement BookList and Book components for each list and individual book
     <> 
       <NavComponent/>
         <CardComponent content = {content} />
