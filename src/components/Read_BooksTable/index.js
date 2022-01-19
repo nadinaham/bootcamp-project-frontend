@@ -15,11 +15,13 @@ const Read_BooksTable = (props) => {
             <tr>
                 <td><Text>User ID</Text></td>
                 <td><Text>Book ID</Text></td>
+                <td><Text>Title</Text></td>
+                <td><Text>Author</Text></td>
             </tr>
         </thead>
         <tbody>
           {props.data.read_bookByUser.map(read => (
-            <BookItem key={read.id} userID={read.userID} bookID={read.bookID} />
+            <BookItem key={read.id} userID={read.userID} bookID={read.bookID} title={read.title} author={read.author}/>
           ))}
     </tbody>
   </table>

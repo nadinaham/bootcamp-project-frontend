@@ -15,11 +15,13 @@ const Saved_BooksTable = (props) => {
             <tr>
                 <td><Text>User ID</Text></td>
                 <td><Text>Book ID</Text></td>
+                <td><Text>Title</Text></td>
+                <td><Text>Author</Text></td>
             </tr>
         </thead>
         <tbody>
           {props.data.savedByUser.map(saved => (
-            <BookItem key={saved.id} userID={saved.userID} bookID={saved.bookID} />
+            <BookItem key={saved.id} userID={saved.userID} bookID={saved.bookID} title={saved.title} author={saved.author}/>
           ))}
     </tbody>
   </table>

@@ -6,6 +6,8 @@ const BookItem = (prop) => {
   <tr>
     <td><Text>{prop.userID}</Text></td>
     <td><Text>{prop.bookID}</Text></td>
+    <td><Text>{prop.title}</Text></td>
+    <td><Text>{prop.author}</Text></td>
   </tr>
   )
 }

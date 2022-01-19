@@ -15,11 +15,13 @@ const Rec_BooksTable = (props) => {
             <tr>
                 <td><Text>User ID</Text></td>
                 <td><Text>Book ID</Text></td>
+                <td><Text>Title</Text></td>
+                <td><Text>Author</Text></td>                
             </tr>
         </thead>
         <tbody>
           {props.data.rec_listByUser.map(rec => (
-            <BookItem key={rec.id} userID={rec.userID} bookID={rec.bookID} />
+            <BookItem key={rec.id} userID={rec.userID} bookID={rec.bookID} title={rec.title} author={rec.author}/>
           ))}
     </tbody>
   </table>
