@@ -4,7 +4,6 @@
 import React, { useState } from 'react'
 import CardComponent from '../../components/CardComponent'
 import NavComponent from '../../components/NavComponent'
-import DeleteButtonComponent from '../../components/DeleteButtonComponent'
 
 const Library = () => {
   // Load up library data from backend
