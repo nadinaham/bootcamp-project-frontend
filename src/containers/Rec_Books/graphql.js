@@ -5,7 +5,9 @@ export const GET_REC_BOOKS_BY_USER = gql`
         rec_listByUser(userID: $userID){
             id
             userID
-            bookID        
+            bookID      
+            title
+            author  
         }  
     }
 `

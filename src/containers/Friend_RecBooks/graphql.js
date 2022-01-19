@@ -7,6 +7,8 @@ export const GET_FRIEND_BOOKS_BY_USER = gql`
             senderID
             recipientID
             bookID
+            title
+            author
         }  
     }
 `

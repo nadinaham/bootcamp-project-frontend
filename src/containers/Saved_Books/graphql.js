@@ -5,7 +5,9 @@ export const GET_SAVED_BOOKS_BY_USER = gql`
         savedByUser(userID: $userID){
             id
             userID
-            bookID        
+            bookID    
+            title
+            author    
         }  
     }
 `
