@@ -7,6 +7,11 @@ import client from './client'
 import Home from './containers/Home'
 import Register from './containers/Register'
 import Login from './containers/Login'
+import Read_Books from './containers/Read_Books'
+import Rec_Books from './containers/Rec_Books'
+import Saved_Books from './containers/Saved_Books'
+import Friend_RecBooks from './containers/Friend_RecBooks'
+import Follows from './containers/Follows'
 
 const App = () => (
   <Router>
@@ -16,6 +21,11 @@ const App = () => (
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/read-books" component={Read_Books} />
+            <Route path="/rec-books" component={Rec_Books} />
+            <Route path="/saved-books" component={Saved_Books} />
+            <Route path="/friend-rec" component={Friend_RecBooks} />
+            <Route path="/follows" component={Follows} />
             <Route path="/" component={Home} />
           </Switch>
         </div>
