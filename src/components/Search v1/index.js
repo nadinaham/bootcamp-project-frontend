@@ -65,7 +65,7 @@ const Search = () => {
             }}
           >
             <InputContainer>
-              <input type="text" placeholder = "e.g. Harry Potter or Charles Dickens" onChange={e => setSearch(e.target.value)} />
+              <input type="search" placeholder = "e.g. Harry Potter or Charles Dickens" onChange={e => setSearch(e.target.value)} />
             </InputContainer>
             <Button content = "Search"></Button>
           </form>
@@ -87,7 +87,7 @@ const Search = () => {
           }}
         >
             <InputContainer>
-              <input type="text" placeholder = "e.g. Harry Potter or Charles Dickens" onChange={e => setSearch(e.target.value)} />
+              <input type="search" placeholder = "e.g. Harry Potter or Charles Dickens" onChange={e => setSearch(e.target.value)} />
             </InputContainer>
           <Button content = "Search"></Button>
         </form>
