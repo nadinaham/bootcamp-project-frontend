@@ -11,7 +11,7 @@ const NavComponent = ( input ) => {
         <NavItem> <strong>My books</strong></NavItem>
         <NavItem> <strong>Recommendations</strong></NavItem>
         <NavItem> <strong>Friends</strong></NavItem>
-        <NavItem> <strong>My Account</strong></NavItem>
+        <NavItem> <strong>Account</strong></NavItem>
       </Nav>
     </>
   )
