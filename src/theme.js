@@ -12,7 +12,9 @@ const theme = {
     submit: '#4CAF50',
     submithover: '#449C47',
     main: '#FFE7C2',
-    llblue: '#EBF7FF'
+    llblue: '#EBF7FF',
+    sandy: '#F09D51',
+    nyanza: '#E4FDE1'
   },
   fonts: {},
 }
