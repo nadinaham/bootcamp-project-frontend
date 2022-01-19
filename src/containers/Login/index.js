@@ -1,22 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ButtonComponent from '../../components/ButtonComponent'
-import CardComponent from '../../components/LoginCardComponent'
+import LoginCardComponent from '../../components/LoginCardComponent'
 import { FlexContainer, Input } from './styles'
+import { useMutation } from '@apollo/react-hooks'
+import { LOGIN } from './graphql'
+import { useHistory } from 'react-router-dom'
+
+// test user email: Ross.Crist@Verla.ca password: password
 
 const Login = () => {
+  const history = useHistory()
+  const [email, setEmail] = useState('')
+  const [pass, setPass] = useState('')
+  const [login, {loading, error}] = useMutation(LOGIN, {
+    variables: {
+      email, 
+      password: pass,
+    },
+    onCompleted:({login: { token }}) => {
+      localStorage.setItem('token', token)
+      history.push('/home')
+    }
+  })
   const content = 
     <>
       <FlexContainer>
-        <Input placeholder = "email"></Input>
+        <Input placeholder = "email" type="text" name="email" value ={email} onChange ={e => setEmail(e.target.value)}></Input>
       </FlexContainer>
       <FlexContainer>
-        <Input placeholder = "password"></Input>
+        <Input placeholder = "password" type="password" name="pass" value ={pass} onChange ={e => setPass(e.target.value)}></Input>
       </FlexContainer>
-      <ButtonComponent content = "Submit!"/>
+      <button onClick = {() => login()}>test</button>
+      <ButtonComponent content = "Submit!" onClick = {() => login()}/>
     </>;
   return(
     <> 
-      <CardComponent content = {content} ></CardComponent>
+      <LoginCardComponent content = {content} ></LoginCardComponent>
     </>
   )
 
