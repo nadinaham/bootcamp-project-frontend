@@ -9,7 +9,7 @@ const Friend_RecBooks = () => {
     const history = useHistory()
     const token = localStorage.getItem('token')
     if(!token){
-      history.push('/')
+        history.push('/login')
     }
     const ID = "22b8acfb-3300-4632-84bc-aa66e76cbdd7"
     const {loading, error, data} = useQuery(GET_FRIEND_BOOKS_BY_USER, {

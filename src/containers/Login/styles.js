@@ -17,5 +17,3 @@ export const Input = styled.input`
   font-size: 22px;
   padding: 5px 10px;`
 
-
-

@@ -46,7 +46,7 @@ const Follows = () => {
     const history = useHistory()
     const token = localStorage.getItem('token')
     if(!token){
-      history.push('/')
+        history.push('/login')
     }
     return (
         <Container>

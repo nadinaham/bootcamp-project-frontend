@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Background, MainContainer, ButtonContainer, GreetHead, GreetDesc } from './styles'
+import { Background, MainContainer, ButtonContainer, GreetHead, GreetDesc, Input } from './styles'
 import Button from '../../components/ButtonComponent'
 
 const Greet = () => {
@@ -38,7 +38,7 @@ const Greet = () => {
               goTo('login')
             }}
           >
-            <Button content = "Click Here to get started!"></Button>
+            <Input type="submit" value="Click Here to get started!"></Input>
           </form>
           </ButtonContainer>
         </Background>
