@@ -3,8 +3,14 @@ import { useQuery } from '@apollo/react-hooks'
 import { Container, Text } from './styles'
 import { GET_FOLLOWS_BY_USER } from './graphql'
 import FollowTable from '../../components/FollowTable'
+import { useHistory } from 'react-router-dom'
 
 const Follows = () => {
+    const history = useHistory()
+    const token = localStorage.getItem('token')
+    if(!token){
+      history.push('/')
+    }
     const ID = "d74c2b6e-ae25-4153-991f-1fa44fdff81e"
     const {loading, error, data} = useQuery(GET_FOLLOWS_BY_USER, {
         variables: {followingUserID: ID}})
