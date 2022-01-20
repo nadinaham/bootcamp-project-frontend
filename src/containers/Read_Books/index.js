@@ -1,19 +1,19 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { Container, Text } from './styles'
-import { GET_FRIEND_BOOKS_BY_USER } from './graphql'
-import Friend_RecBooksTable from '../../components/Friend_RecBooksTable'
+import { GET_READ_BOOKS_BY_USER } from './graphql'
+import Read_BooksTable from '../../components/Read_BooksTable'
 import { useHistory } from 'react-router-dom'
 
-const Friend_RecBooks = () => {
+const Read_Books = () => {
     const history = useHistory()
     const token = localStorage.getItem('token')
     if(!token){
       history.push('/')
     }
-    const ID = "22b8acfb-3300-4632-84bc-aa66e76cbdd7"
-    const {loading, error, data} = useQuery(GET_FRIEND_BOOKS_BY_USER, {
-        variables: {recipientID: ID}})
+    const ID = "4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050"
+    const {loading, error, data} = useQuery(GET_READ_BOOKS_BY_USER, {
+        variables: {userID: ID}})
     if (loading) 
     {
         return <Container><Text>Loading...</Text></Container>
@@ -23,9 +23,9 @@ const Friend_RecBooks = () => {
     }
     return (
         <Container>
-            <Friend_RecBooksTable data={data} />
+            <Read_BooksTable data={data} />
         </Container>
     )
 }
 
-export default Friend_RecBooks
+export default Read_Books

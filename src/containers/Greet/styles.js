@@ -33,7 +33,6 @@ export const GreetHead = styled.div`
   color: ${props => props.theme.colors.brown};
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-
   border-bottom: 1px solid ${props => props.theme.colors.brown};
   `
 
