@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ButtonComponent from '../../components/ButtonComponent'
 import LoginCardComponent from '../../components/LoginCardComponent'
-import { FlexContainer, Input, Inputv2 } from './styles'
+import { FlexContainer, Input } from './styles'
 import { useMutation } from '@apollo/react-hooks'
 import { LOGIN } from './graphql'
 
