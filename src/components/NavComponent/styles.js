@@ -35,6 +35,7 @@ export const NavItem = styled.div `
   color: ${props => props.theme.colors.brown};
   &:hover{
     box-shadow: 0px -6px ${props => props.theme.colors.brown} inset;
+    cursor: pointer;
   }
 
 `  

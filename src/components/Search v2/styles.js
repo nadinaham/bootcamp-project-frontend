@@ -1,5 +1,17 @@
 import styled from 'styled-components'
 
+export const TableHeader = styled.h1`
+  color: black;
+  font: 'Times New Roman';
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: auto;
+  background-color: ${props => props.theme.colors.sandy};
+`
+
+export const HeaderRow = styled.tr`
+  border-radius: 20px 20px 0px 0px;
+`
 
 export const Container = styled.div`
   height: 80vh;
@@ -51,6 +63,37 @@ export const Container = styled.div`
   }
 `
 
+export const Text = styled.h2`
+  color: black;
+  text-align: center;
+  font-family: 'Courier New';
+  font-size: 13px;
+  letter-spacing: auto;
+  text-align: center;
+`
+
+export const Header = styled.h2`
+  margin: 0;
+  background-color: ${props => props.theme.colors.header};
+  padding: 10px;
+  border-radius: 20px 20px 0px 0px;
+  `
+
+export const SubHeader = styled.div`
+  margin: 0;
+  background-color: ${props => props.theme.colors.lightheader};
+  padding: 10px;
+  border-radius: 0px 0px 5px 5px;
+  `
+
+export const InputContainer = styled.div`
+  input{
+    border-radius: 5px;
+    min-width: 300px;
+    padding: 5px;
+
+  }`
+
 /*header: '#FED18C',
 lightheader: '#FED99B',
 lblue: '#D6EFFF',
@@ -60,10 +103,3 @@ submit: '#4CAF50',
 submithover: '#449C47',
 main: '#FFE7C2',
 llblue: '#EBF7FF'*/
-
-export const Text = styled.h1`
-  font: 'Times New Roman';
-  font-size: 20px;
-  text-align: center;
-  letter-spacing: auto;
-`
