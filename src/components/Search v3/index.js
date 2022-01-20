@@ -5,7 +5,6 @@ import Button from '../ButtonComponent'
 const style = (arr) => {
   try {
     let sorted = ""
-    console.log(arr)
     for(let i = 0; i < arr.length - 1; i++)
     {
       sorted += arr[i] + ", "
@@ -36,7 +35,7 @@ const Search = (props) => {
         const json = await response.json();
         setResult(
           json.items.map(item => {
-            return [item.volumeInfo.title, item.volumeInfo.authors];
+            return [item.volumeInfo.title, item.volumeInfo.authors, item.id, props.ID];
           })
         );
       } catch (e) {
@@ -113,7 +112,7 @@ const Search = (props) => {
                 return (<tr>
                   <td>{item[0]}</td>
                   <td><i>{style(item[1])}</i></td>
-                  <td><Button >Add</Button></td>
+                  <td><Button onClick={props.handleAddAlready}/></td>
                 </tr>)
               })}
           </tbody>

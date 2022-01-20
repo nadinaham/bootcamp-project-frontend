@@ -3,7 +3,7 @@ import { Container, Text } from './styles'
 import BookItem from '../BookItem'
 
 const AlreadyReadTable = props => {
-  if (props.data.read_bookByUser.length === 0) {
+  if (props.data.user_read_books.length === 0) {
     return (<Text>No Elements in Table</Text>)
   }
   return (
@@ -19,7 +19,7 @@ const AlreadyReadTable = props => {
           </tr>
         </thead>
         <tbody>
-          {props.data.read_bookByUser.map(read => (
+          {props.data.user_read_books.map(read => (
             <BookItem
               key={read.id}
               userID={read.userID}

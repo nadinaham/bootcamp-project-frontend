@@ -2,6 +2,7 @@ import React from 'react'
 import CardComponent from '../../components/CardComponent'
 import NavComponent from '../../components/NavComponent'
 import Search from '../../components/Search v1'
+import Recommend from '../../components/FilteredRecommended'
 
 const Home = () => {
   const content = (
