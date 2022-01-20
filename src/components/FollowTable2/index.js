@@ -2,14 +2,14 @@ import React from 'react'
 import { Container, Text } from './styles'
 import PersonItem from '../PersonItem'
 
-const FollowTable = (props) => {
-  if (props.data.followsByFollowed.length === 0)
+const FollowTable2 = (props) => {
+  if (props.data.followsByFollower.length === 0)
   {
     return (<Text>No Elements in Table</Text>)
   } else {
     return (
         <Container>
-            <Text>Who's Following You?</Text>
+            <Text>Who Are You Following?</Text>
             <table>
         <thead>
             <tr>
@@ -18,14 +18,14 @@ const FollowTable = (props) => {
             </tr>
         </thead>
         <tbody>
-          {props.data.followsByFollowed.map(friend => (
+          {props.data.followsByFollower.map(friend => (
             <PersonItem key={friend.id}  followedUserID={friend.followedUserID} followingUserID={friend.followingUserID}/>
           ))}
-    </tbody>
-  </table>
+        </tbody> 
+            </table>
         </Container>
     )
   }
 }
 
-export default FollowTable
+export default FollowTable2
