@@ -19,7 +19,6 @@ const Login = () => {
       <CardComponent content = {content} ></CardComponent>
     </>
   )
-
 }
 
 export default Login

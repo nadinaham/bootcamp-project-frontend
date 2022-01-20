@@ -38,7 +38,14 @@ export const GreetHead = styled.div`
   `
 
 export const GreetDesc = styled.div`
-
+  margin-top: 2vh;
+  text-align: center;
+  span{
+    font-weight: bolder;
+  }
+  ul{
+    list-style: none;
+  }
   `
 
 export const ButtonContainer = styled.div`
