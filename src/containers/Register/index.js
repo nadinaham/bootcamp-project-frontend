@@ -4,20 +4,28 @@ import ButtonComponent from '../../components/ButtonComponent'
 import { FlexContainer, Input } from '../Login/styles'
 
 const Register = () => {
-  const content = 
+  const content = (
     <>
+      <body>
+        <p>
+          <b>Register for Bookify - book recommendations that will change your life!</b>
+        </p>
+      </body>
       <FlexContainer>
-        <Input placeholder = "email"></Input>
+        <Input placeholder="Email" />
       </FlexContainer>
       <FlexContainer>
-        <Input placeholder = "password"></Input>
-        <Input placeholder = "confirm password"></Input>
+        <Input placeholder="Password" />
+        <Input placeholder="Confirm Password" />
       </FlexContainer>
-      <ButtonComponent content = "Submit!"/>
-    </>;
-  return(
-    <> 
-      <CardComponent content = {content} ></CardComponent>
+      <div width="50%">
+        <ButtonComponent content="Submit!" />
+      </div>
+    </>
+  )
+  return (
+    <>
+      <CardComponent content={content} />
     </>
   )
 }

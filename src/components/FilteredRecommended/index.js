@@ -16,43 +16,47 @@ const style = arr => {
   }
 }
 
-const Recommend = () => {
-  const [query, setQuery] = useState('Tamora Pierce')
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max);
+}
 
+const Recommend = () => {
   const [result, setResult] = useState([])
   const [error, setError] = useState(false)
 
   const { loading, error: thisError, data } = useQuery(GET_USER_READ_BOOKS, {
     variables: { userID: '44200099-1227-4254-9f3a-8490789c8c35' },
-    fetchPolicy: 'no-cache',
   })
 
   useEffect(() => {
-    async function fetchBookList() {
-      try {
-        const response = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=inauthor:${query}`
-        )
-
-        const json = await response.json()
-        setResult(
-          json.items.map(item => [item.volumeInfo.title, item.volumeInfo.authors, item.id]),
-        )
-      } catch (e) {
-        setError(true)
-      }
-    }
-    if (query !== '') {
-      fetchBookList()
-    }
-  }, [query])
+    if(data) {
+        const allAuthorsString = data.user_read_books[getRandomInt(data.user_read_books.length)].author
+        const allAuthorsArray = allAuthorsString.split(', ')
+        const randAuthor = allAuthorsArray[getRandomInt(allAuthorsArray.length)]
+        console.log(randAuthor)
+        async function fetchBookList() {
+          try {
+            const response = await fetch(
+              `https://www.googleapis.com/books/v1/volumes?q=inauthor:${randAuthor}`
+            )
+            const json = await response.json()
+            setResult(
+              json.items.map(item => [item.volumeInfo.title, item.volumeInfo.authors, item.id]),
+            )
+          } catch (e) {
+            setError(true)
+          }
+        }
+        fetchBookList()
+        }
+  }, [data])
 
   if (loading) {
     return 'Loading...'
   }
 
   if (thisError) {
-    return `Error: ${error}`
+    return 'Error'
   }
 
   const a = []
