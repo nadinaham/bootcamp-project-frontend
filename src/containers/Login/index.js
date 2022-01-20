@@ -4,7 +4,7 @@ import CardComponent from '../../components/LoginCardComponent'
 import { FlexContainer, Input } from './styles'
 
 const Login = () => {
-  const content = 
+  const content = (
     <>
       <FlexContainer>
         <Input placeholder = "email"></Input>
@@ -12,14 +12,21 @@ const Login = () => {
       <FlexContainer>
         <Input placeholder = "password"></Input>
       </FlexContainer>
-      <ButtonComponent content = "Submit!"/>
-    </>;
+      <div width="50%">
+        <ButtonComponent content = "Submit!"/>
+      </div>
+    </>
+  )
+
   return(
     <> 
       <CardComponent content = {content} ></CardComponent>
     </>
   )
-
 }
 
 export default Login
+
+// need a not registered? then make an account here thing -> steal from nav component
+// prettify the button
+// add text encouraging folks to sign in
