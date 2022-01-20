@@ -15,19 +15,19 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
   const [errorMsg, setError] = useState('')
+  
   const [login, {loading, error}] = useMutation(LOGIN, {
     variables: {
       email, 
       password: pass,
     },
+    onCompleted:({ login: { token } }) => {
+      localStorage.setItem('token', token)
+      history.push('/home')
+    },
     onError: () => {
       setError("No User Found!")
     },
-    onCompleted:({login: { token }}) => {
-      localStorage.setItem('token', token)
-      history.push('/home')
-      setError("")
-    }
   })
 
   const content = 
@@ -42,10 +42,10 @@ const Login = () => {
         </p>
       </body>
       <FlexContainer>
-        <Input placeholder = "email" type="text" name="email" value ={email} onChange ={e => setEmail(e.target.value)}></Input>
+        <Input placeholder = "email" type="text" name="email" value ={email} onChange ={e => {setEmail(e.target.value); setError("")}}></Input>
       </FlexContainer>
       <FlexContainer>
-        <Input placeholder = "password" type="password" name="pass" value ={pass} onChange ={e => setPass(e.target.value)}></Input>
+        <Input placeholder = "password" type="password" name="pass" value ={pass} onChange ={e => {setPass(e.target.value); setError("")}}></Input>
       </FlexContainer>
       <button onClick={() => login()}>Log In!</button>
       <p>{errorMsg}</p>
