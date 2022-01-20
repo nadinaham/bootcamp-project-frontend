@@ -1,7 +1,8 @@
 import React from 'react'
+import ButtonComponent from '../ButtonComponent'
 import { Text } from './styles'
 
-const BookItem = prop => {
+const DislikedBookItem = (prop, { handleDeleteDisliked }) => {
 
   return (
     <tr>
@@ -9,8 +10,9 @@ const BookItem = prop => {
       <td><Text>{prop.bookID}</Text></td>
       <td><Text>{prop.title}</Text></td>
       <td><Text>{prop.author}</Text></td>
+      <td><ButtonComponent color="pink" book={prop} funct={handleDeleteDisliked} title="Remove" /></td>
     </tr>
   )
 }
 
-export default BookItem
+export default DislikedBookItem
