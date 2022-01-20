@@ -13,13 +13,13 @@ export const GET_READ_BOOKS_BY_USER = gql`
 `
 
 export const ADD_TO_ALREADY_READ = gql`
- 	mutation read_bookByUser($userID: String!) {
-        read_bookByUser(userID: $userID){
+ 	mutation addBooktoRead($input: AddBookList!) {
+        addBooktoRead(input: $input) {
             id
             userID
-            bookID  
+            bookID
             title
-            author      
-        }  
+            author
+        }
     }
 `

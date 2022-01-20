@@ -4,7 +4,7 @@ import { Button } from './styles'
 const ButtonComponent = ({color, book, funct, title}) => {
   return (
     <>
-      <Button id={book.id} onClick={funct}>
+      <Button>
         {title}
       </Button>
     </>
