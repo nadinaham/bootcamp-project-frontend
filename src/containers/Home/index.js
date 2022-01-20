@@ -6,7 +6,7 @@ import Search from '../../components/Search v1'
 const Home = () => {
   const content = (
     <>
-      <Search />
+      <Search header="Book Search" subHeader="Search for books by title or author!" desc="e.g. Harry Potter or Charles Dickens"/>
     </>
   )
   return (

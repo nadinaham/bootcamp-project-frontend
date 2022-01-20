@@ -4,6 +4,7 @@ import { Container, Text } from './styles'
 import { GET_FOLLOWS_BY_USER, GET_FOLLOWERS_BY_USER } from './graphql'
 import FollowTable from '../../components/FollowTable'
 import FollowTable2 from '../../components/FollowTable2'
+import Search from '../../components/Search v1'
 
 const FollowTableP1 = () => {
     const ID = "d74c2b6e-ae25-4153-991f-1fa44fdff81e"
@@ -40,6 +41,7 @@ const FollowTableP2 = () => {
 const Follows = () => {
     return (
         <Container>
+            <Search header="Book Search" subHeader="Search for books to recommend to those following you!" desc="e.g. Harry Potter or Charles Dickens"/>
             <FollowTableP1 />
             <FollowTableP2 />
         </Container>

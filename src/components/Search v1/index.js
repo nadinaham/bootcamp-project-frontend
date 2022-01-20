@@ -17,7 +17,7 @@ const style = (arr) => {
   }
 }
 
-const Search = () => {
+const Search = (props) => {
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   
@@ -52,8 +52,8 @@ const Search = () => {
       return (
         <Container>
           <div>
-            <Header>Book Search</Header>
-            <SubHeader>Search for books by title or author!</SubHeader>
+            <Header>{props.header}</Header>
+            <SubHeader>{props.subHeader}</SubHeader>
           </div>
 
           <form
@@ -65,7 +65,7 @@ const Search = () => {
             }}
           >
             <InputContainer>
-              <input type="search" placeholder = "e.g. Harry Potter or Charles Dickens" onChange={e => setSearch(e.target.value)} />
+              <input type="search" placeholder = {props.desc} onChange={e => setSearch(e.target.value)} />
             </InputContainer>
             <Button content = "Search"></Button>
           </form>
@@ -76,8 +76,8 @@ const Search = () => {
       return (
       <Container>
           <div>
-            <Header>Book Search</Header>
-            <SubHeader>Search for books by title or author!</SubHeader>
+            <Header>{props.header}</Header>
+            <SubHeader>{props.subHeader}</SubHeader>
           </div>
         <form
           onSubmit={e => {
@@ -87,7 +87,7 @@ const Search = () => {
           }}
         >
             <InputContainer>
-              <input type="search" placeholder = "e.g. Harry Potter or Charles Dickens" onChange={e => setSearch(e.target.value)} />
+              <input type="search" placeholder = {props.desc} onChange={e => setSearch(e.target.value)} />
             </InputContainer>
           <Button content = "Search"></Button>
         </form>

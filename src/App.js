@@ -27,13 +27,8 @@ const App = () => (
             <Route path="/saved-books" component={Saved_Books} />
             <Route path="/friend-rec" component={Friend_RecBooks} />
             <Route path="/follows" component={Follows} />
-<<<<<<< HEAD
-            <Route path="/" component={Home} />
-            {/* <Route path="/greet" component={Greet} /> */}
-=======
             <Route path="/greet" component={Greet} />
             <Route path="/" component={Home} />
->>>>>>> 09a48f0609c0dc1129088671c835c9b227aa7b98
           </Switch>
         </div>
       </ApolloProvider>
