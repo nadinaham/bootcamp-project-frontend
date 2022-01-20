@@ -7,7 +7,6 @@ import FollowTable2 from '../../components/FollowTable2'
 import Search from '../../components/Search v1'
 import UserSearch from '../../components/Search v2'
 import { useHistory } from 'react-router-dom'
-const ID = "d74c2b6e-ae25-4153-991f-1fa44fdff81e"
 
 
 const ID = "d74c2b6e-ae25-4153-991f-1fa44fdff81e"
