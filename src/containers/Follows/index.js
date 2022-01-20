@@ -6,6 +6,8 @@ import FollowTable from '../../components/FollowTable'
 import FollowTable2 from '../../components/FollowTable2'
 import Search from '../../components/Search v1'
 import UserSearch from '../../components/Search v2'
+import { useHistory } from 'react-router-dom'
+
 
 const ID = "d74c2b6e-ae25-4153-991f-1fa44fdff81e"
 
@@ -24,6 +26,7 @@ const FollowTableP1 = () => {
     )
 }
 
+
 const FollowTableP2 = () => {
     const {loading, error, data} = useQuery(GET_FOLLOWERS_BY_USER, {
         variables: {followingUserID: ID}})
@@ -40,6 +43,11 @@ const FollowTableP2 = () => {
 }
 
 const Follows = () => {
+    const history = useHistory()
+    const token = localStorage.getItem('token')
+    if(!token){
+      history.push('/')
+    }
     return (
         <Container>
             <UserSearch header="User Search" subHeader="Search for the email of other users!" desc="e.g. example@example.com"/>

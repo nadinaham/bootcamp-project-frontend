@@ -3,8 +3,14 @@ import { useQuery } from '@apollo/react-hooks'
 import { Container, Text } from './styles'
 import { GET_SAVED_BOOKS_BY_USER } from './graphql'
 import Saved_BooksTable from '../../components/Saved_BooksTable'
+import { useHistory } from 'react-router-dom'
 
 const Saved_Books = () => {
+    const history = useHistory()
+    const token = localStorage.getItem('token')
+    if(!token){
+      history.push('/')
+    }
     const ID = "4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050"
     const {loading, error, data} = useQuery(GET_SAVED_BOOKS_BY_USER, {
         variables: {userID: ID}})
