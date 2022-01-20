@@ -15,8 +15,8 @@ const Register = () => {
         <Input placeholder="Email" />
       </FlexContainer>
       <FlexContainer>
-        <Input placeholder="Password" />
-        <Input placeholder="Confirm Password" />
+        <Input type="password" placeholder="Password" />
+        <Input type="password" placeholder="Confirm Password" />
       </FlexContainer>
       <div width="50%">
         <ButtonComponent content="Submit!" />
