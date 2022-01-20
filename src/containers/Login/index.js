@@ -1,26 +1,37 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import ButtonComponent from '../../components/ButtonComponent'
 import CardComponent from '../../components/LoginCardComponent'
 import { FlexContainer, Input } from './styles'
 
+
 const Login = () => {
   const content = (
     <>
+      <body>
+        <p>
+          <b>Got an account? Log in!</b>
+        </p>
+        <p>
+          <b>No account? </b>
+          <a href="/register">Register here!</a>
+        </p>
+      </body>
       <FlexContainer>
-        <Input placeholder = "email"></Input>
+        <Input placeholder="Email" />
       </FlexContainer>
       <FlexContainer>
-        <Input placeholder = "password"></Input>
+        <Input placeholder="Password" />
       </FlexContainer>
       <div width="50%">
-        <ButtonComponent content = "Submit!"/>
+        <ButtonComponent content="Submit!" />
       </div>
     </>
   )
 
-  return(
-    <> 
-      <CardComponent content = {content} ></CardComponent>
+  return (
+    <>
+      <CardComponent content={content} />
     </>
   )
 }
