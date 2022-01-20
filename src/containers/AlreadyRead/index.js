@@ -4,8 +4,15 @@ import { Container, Text } from './styles'
 import { GET_READ_BOOKS_BY_USER, ADD_TO_ALREADY_READ, DELETE_FROM_ALREADY_READ, REC_TO_FRIEND } from './graphql'
 import AlreadyReadTable from '../../components/AlreadyReadTable'
 import Search from '../../components/Search v3'
+import { useHistory } from 'react-router-dom'
 
 const AlreadyRead = () => {
+    const history = useHistory()
+    const token = localStorage.getItem('token')
+    if(!token){
+      history.push('/login')
+    }
+
   // set relevant states
   const [bookID, setBookID] = useState('')
   const [ID, setID] = useState('4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050')
