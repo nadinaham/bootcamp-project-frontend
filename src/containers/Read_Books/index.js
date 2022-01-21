@@ -17,7 +17,7 @@ const Read_Books = () => {
         variables: {userID: ID}})
     if (loading) 
     {
-        return <Container><Text>Loading...</Text></Container>
+        return <LoadingComponent/>
     } else if (error)
     {
         return <Container><Text>Error!</Text></Container>

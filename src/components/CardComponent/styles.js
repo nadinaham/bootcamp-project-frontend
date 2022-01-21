@@ -15,6 +15,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   height: 80vh;
+  padding-bottom: 5vh;
   width: 70%;
   margin-top: 30px;
   border-radius: 20px;
@@ -22,7 +23,7 @@ export const Card = styled.div`
   background-color: ${props => props.theme.colors.main}
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: flex-start; 
   gap: 20px;
   text-align: center;
   z-index: 1;

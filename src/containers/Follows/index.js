@@ -8,6 +8,8 @@ import Search from '../../components/Search v1'
 import UserSearch from '../../components/Search v2'
 import { useHistory } from 'react-router-dom'
 import jwt_decode from "jwt-decode"
+import NavComponent from '../../components/NavComponent'
+import CardComponent from '../../components/CardComponent'
 
 const token = localStorage.getItem('token')
 const ID = jwt_decode(token).id
@@ -48,13 +50,24 @@ const Follows = () => {
     if(!token){
         history.push('/login')
     }
-    return (
-        <Container>
+    const content1 = (
+        <>
             <UserSearch header="User Search" subHeader="Search for the email of other users!" desc="e.g. example@example.com"/>
-            <Search header="Book Search" subHeader="Search for books to recommend to those following you!" desc="e.g. Harry Potter or Charles Dickens"/>
             <FollowTableP1 />
+        </>
+    )
+    const content2 = (
+        <>
+            <Search header="Book Search" subHeader="Search for books to recommend to those following you!" desc="e.g. Harry Potter or Charles Dickens"/>
             <FollowTableP2 />
-        </Container>
+        </>
+    )
+    return (
+        <> 
+            <NavComponent/>
+            <CardComponent content = {content1} />
+            <CardComponent content = {content2} />
+        </>
     )
 }
 

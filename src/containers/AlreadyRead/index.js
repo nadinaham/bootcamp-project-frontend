@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { Container, Text } from './styles'
+import NavComponent from '../../components/NavComponent'
+import CardComponent from '../../components/CardComponent'
 import { GET_READ_BOOKS_BY_USER, ADD_TO_ALREADY_READ } from './graphql'
 import AlreadyReadTable from '../../components/AlreadyReadTable'
 import Search from '../../components/Search v3'
@@ -52,7 +54,7 @@ const AlreadyRead = () => {
   // if (loading) return 'Loading...'
   // if (error) return `Error: ${error}`
 
-  if (queryLoading) return 'Loading...'
+  if (queryLoading) return <LoadingComponent/>
   if (queryError) return `Error: ${queryError}`
   // const [handleDeleteAlready] = useMutation(ADD_FRIEND, {
   //   update: (client, { data: { addFriend } }) => {
@@ -103,6 +105,7 @@ const AlreadyRead = () => {
       <CardComponent content = {content2} />
     </>
   )
+
 }
 
 export default AlreadyRead
