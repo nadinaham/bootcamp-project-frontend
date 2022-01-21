@@ -21,9 +21,9 @@ const style = arr => {
 }
 
 const Search = props => {
-  let bookID = 'boo'
-  let title = 'hi'
-  let author = 'no'
+  const [bookID, setBook] = useState('')
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
 
   const [search, setSearch] = useState('')
   const [query, setQuery] = useState('')
@@ -53,13 +53,6 @@ const Search = props => {
     }
   }, [query])
 
-
-  const setEverything =  (tit, aut, boo) => {
-    title = tit 
-    author = aut
-    bookID = boo
-  }
-
   const [handleAddAlready, { loading, error: thisError }] = useMutation(ADD_TO_ALREADY_READ, {
     variables: {
       input: {
@@ -83,6 +76,18 @@ const Search = props => {
   })
   if (loading) return 'Loading...'
   if (thisError) return `Error: ${thisError}`
+
+  const setEverything = async (tit, aut, boo) => {
+    const promise1 = new Promise((resolve) => {
+      setBook(boo)
+      setTitle(tit)
+      setAuthor(aut)
+      resolve('test')
+    })
+    promise1.then((val) => {
+      handleAddAlready()
+    })
+  }
 
   if (!startUp) {
     return (
@@ -151,18 +156,12 @@ const Search = props => {
                   <td>{item[0]}</td>
                   <td><i>{style(item[1])}</i></td>
                   <td>
-                    <Button
-                      funct={() => {
-                        console.log(item)
-                        setEverything(item[0], style(item[1]), item[2])
-                        console.log(title)
-                        setTimeout(() => { handleAddAlready() }, 2000)
-                        title = "BLAH"
-                        handleAddAlready()
-                      }}
-                      title="hi"
-                    />
-
+                    <button
+                      type="submit"
+                      onClick={() => { setEverything(item[0], style(item[1]), item[2]) }}
+                    >
+                        Add
+                    </button>
                   </td>
                 </tr>
               ))}
