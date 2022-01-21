@@ -6,6 +6,7 @@ import AlreadyReadTable from '../../components/AlreadyReadTable'
 import Search from '../../components/Search v3'
 import { useHistory } from 'react-router-dom'
 import NavComponent from '../../components/NavComponent'
+import CardComponent from '../../components/CardComponent'
 
 const AlreadyRead = () => {
     const history = useHistory()
@@ -82,14 +83,26 @@ const AlreadyRead = () => {
   // }
   // })
   // fix del/rec
-  return (
-    <Container>
-      <NavComponent/>
+  const content = (
+    <>
       <Search header="Book Search" subHeader="Search for books by title or author!" desc="e.g. Harry Potter or Charles Dickens" />
+    </>
+  )
+  const content2 = (
+    <>
       <AlreadyReadTable
         data={alreadyReadData}
       />
-    </Container>
+    </>
+  )
+
+
+  return (
+    <>
+      <NavComponent/>
+      <CardComponent content = {content} />
+      <CardComponent content = {content2} />
+    </>
   )
 }
 

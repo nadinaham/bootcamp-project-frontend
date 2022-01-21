@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 import { Text, Container } from './styles'
 import GET_USER_READ_BOOKS from './graphql'
+import { GET_READ_BOOKS_BY_USER, ADD_TO_ALREADY_READ } from '../../containers/AlreadyRead/graphql'
+
 
 const style = arr => {
   try {
@@ -19,6 +21,10 @@ const style = arr => {
 const getRandomInt = max => Math.floor(Math.random() * max)
 
 const Recommend = () => {
+  const [bookID, setBook] = useState('')
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+
   const [result, setResult] = useState([])
   const [error, setError] = useState(false)
 
@@ -49,6 +55,43 @@ const Recommend = () => {
       fetchBookList()
     }
   }, [data])
+
+  const [handleAddAlready, { loading: thisLoading, error: thisThisError }] = useMutation(ADD_TO_ALREADY_READ, {
+    variables: {
+      input: {
+        userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119',
+        bookID,
+        title,
+        author,
+      },
+    },
+    onCompleted: data => console.log('done', data),
+    onError: err => console.log('error ', err),
+    update: (client, { data: { handleAddAlready } }) => {
+      try {
+        const data = client.readQuery({ query: GET_READ_BOOKS_BY_USER })
+        data.currentlyReadData = [...data.currentlyReadData, handleAddAlready]
+        client.writeQuery({ query: GET_READ_BOOKS_BY_USER, data })
+      } catch (e) {
+        // do nothing or display error state
+      }
+    },
+  })
+  if (thisLoading) return 'Loading...'
+  if (thisThisError) return `Error: ${thisThisError}`
+
+
+  const setEverything = async (tit, aut, boo) => {
+    const promise1 = new Promise((resolve) => {
+      setBook(boo)
+      setTitle(tit)
+      setAuthor(aut)
+      resolve('test')
+    })
+    promise1.then((val) => {
+      handleAddAlready()
+    })
+  }
 
   if (loading) {
     return 'Loading...'
@@ -83,6 +126,14 @@ const Recommend = () => {
                 <tr>
                   <td>{item[0]}</td>
                   <td>{style(item[1])}</td>
+                  <td>
+                    <button
+                      type="submit"
+                      onClick={() => { setEverything(item[0], style(item[1]), item[2]) }}
+                    >
+                        Add
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
