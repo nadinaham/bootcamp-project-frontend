@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useHistory } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 import { Text, Container } from './styles'
 import { ADD_TO_SAVED } from './graphql'
 import { GET_READ_BOOKS_BY_USER } from '../../containers/AlreadyRead/graphql'
@@ -27,14 +29,21 @@ const Recommend = () => {
   const [result, setResult] = useState([])
   const [error, setError] = useState(false)
 
+  const history = useHistory()
+  const token = localStorage.getItem('token')
+  if (!token) {
+    history.push('/login')
+  }
+  const ID = jwt_decode(token).id
+
   const { loading, error: thisError, data } = useQuery(GET_READ_BOOKS_BY_USER, {
-    variables: { userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119' },
+    variables: { userID: ID },
   })
 
   useEffect(() => {
-    if (data) {
-      console.log(data)
-      const allAuthorsString = 'test' // ERROR HERE FROM .author data.user_read_books[getRandomInt(data.user_read_books.length)].author
+    if (data && data.user_read_books.length > 0) {
+      console.log(data.user_read_books)
+      const allAuthorsString = data.user_read_books[getRandomInt(data.user_read_books.length)].author
       const allAuthorsArray = allAuthorsString.split(', ')
       const randAuthor = allAuthorsArray[getRandomInt(allAuthorsArray.length)]
       console.log(randAuthor)
@@ -81,13 +90,13 @@ const Recommend = () => {
 
 
   const setEverything = async (tit, aut, boo) => {
-    const promise1 = new Promise((resolve) => {
+    const promise1 = new Promise(resolve => {
       setBook(boo)
       setTitle(tit)
       setAuthor(aut)
       resolve('test')
     })
-    promise1.then((val) => {
+    promise1.then(val => {
       handleAddAlready()
     })
   }
@@ -98,6 +107,10 @@ const Recommend = () => {
 
   if (thisError) {
     return 'Error'
+  }
+
+  if (data.user_read_books.length === 0) {
+    return 'Go add some read books!'
   }
 
   const a = []
