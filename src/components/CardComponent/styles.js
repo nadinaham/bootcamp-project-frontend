@@ -14,7 +14,6 @@ export const Container = styled.div`
 `
 
 export const Card = styled.div`
-  min-height: 80vh;
   padding-bottom: 5vh;
   width: 70%;
   margin-top: 30px;
