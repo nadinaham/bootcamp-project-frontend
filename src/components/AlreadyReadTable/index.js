@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Text } from './styles'
 import BookItem from '../BookItem'
 
-const AlreadyReadTable = props => {
+const AlreadyReadTable = (props) => {
   if (props.data.user_read_books.length === 0) {
     return (<Text>No Elements in Table</Text>)
   }

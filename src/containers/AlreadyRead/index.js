@@ -22,12 +22,15 @@ const AlreadyRead = () => {
   const ID = jwt_decode(token).id
   // const [title, setTitle] = useState('')
   // const [author, setAuthor] = useState('')
-
   // import data from backend - check order of this????
-  const { loading: queryLoading, error: queryError, data: alreadyReadData } = useQuery(GET_READ_BOOKS_BY_USER, {
+  const { loading, error , data } = useQuery(GET_READ_BOOKS_BY_USER, {
     variables: { userID: ID },
   })
-
+  if(loading){
+    return <Text>Loading...</Text>
+  } else if(error){
+    return <Text>Error!</Text>
+  }
   // const [handleAddAlready, { loading, error }] = useMutation(ADD_TO_ALREADY_READ, {
   //   variables: {
   //     input: {
@@ -90,7 +93,7 @@ const AlreadyRead = () => {
   const content2 = (
     <>
       <AlreadyReadTable
-        data={alreadyReadData}
+        data={data}
       />
     </>
   )

@@ -2,20 +2,28 @@ import { useMutation } from '@apollo/react-hooks'
 import React, { useState } from 'react'
 import { Text } from './styles'
 import { DELETE_FROM_ALREADY_READ } from './graphql'
+import { GET_READ_BOOKS_BY_USER } from '../../containers/AlreadyRead/graphql'
+import jwt_decode from "jwt-decode"
+
 
 
 const BookItem = prop => {
   const [bookID, setBook] = useState('')
+  const token = localStorage.getItem('token')
+  const ID = jwt_decode(token).id
 
   const [handleDeleteAlready, { loading: thisLoading, error: thisError }] = useMutation(DELETE_FROM_ALREADY_READ, {
     variables: {
       input: {
-        userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119',
+        userID: ID,
         bookID,
       },
     },
-    onCompleted: data => console.log('done', data),
+    onCompleted: () => console.log("done"),
     onError: err => console.log('error ', err),
+    refetchQueries: () => [{ query: GET_READ_BOOKS_BY_USER, variables: {userID: ID} }]
+    
+    
     // update: (client, { data: { handleDeleteAlready } }) => {
     //   try {
     //     const data = client.readQuery({ query: GET_READ_BOOKS_BY_USER })
