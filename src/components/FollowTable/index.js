@@ -13,13 +13,14 @@ const FollowTable = (props) => {
             <table>
         <thead>
             <tr>
-                <td><Text>Followed User ID</Text></td>
-                <td><Text>Follower User ID</Text></td>
+            <td><Text>First Name</Text></td>
+            <td><Text>Last Name</Text></td>
+            <td><Text>Email</Text></td>
             </tr>
         </thead>
         <tbody>
           {props.data.followsByFollowed.map(friend => (
-            <PersonItem key={friend.id}  followedUserID={friend.followedUserID} followingUserID={friend.followingUserID}/>
+            <PersonItem data={friend}/>
           ))}
     </tbody>
   </table>

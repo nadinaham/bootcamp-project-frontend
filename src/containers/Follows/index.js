@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { useHistory } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import { Container, Text } from './styles'
-import { GET_FOLLOWS_BY_USER, GET_FOLLOWERS_BY_USER } from './graphql'
+import { GET_FOLLOWS_BY_USER, GET_FOLLOWERS_BY_USER, GET_USER_BY_ID } from './graphql'
 import FollowTable from '../../components/FollowTable'
 import FollowTable2 from '../../components/FollowTable2'
 import Search from '../../components/Search v1'
@@ -14,6 +14,7 @@ import CardComponent from '../../components/CardComponent'
 const token = localStorage.getItem('token')
 const ID = jwt_decode(token).id
 const FollowTableP1 = () => {
+  // Find people who follow user
   const { loading, error, data } = useQuery(GET_FOLLOWS_BY_USER, { variables: { followedUserID: ID } })
   if (loading) {
     return <Container><Text>Loading...</Text></Container>
@@ -27,7 +28,8 @@ const FollowTableP1 = () => {
 
 
 const FollowTableP2 = () => {
-  const { loading, error, data } = useQuery(GET_FOLLOWERS_BY_USER, { variables: { followingUserID: ID } })
+  // Find people who user follows
+  const { loading, error, data } = useQuery(GET_FOLLOWERS_BY_USER, { variables: { followingUserID: ID }})
   if (loading) {
     return <Container><Text>Loading...</Text></Container>
   } if (error) {

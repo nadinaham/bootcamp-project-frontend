@@ -4,7 +4,10 @@ import BookItem from '../BookItem'
 
 const AlreadyReadTable = (props) => {
   if (props.data.user_read_books.length === 0) {
-    return (<Text>No Elements in Table</Text>)
+    return (<>
+    <Text>Read Books Table!</Text>
+    <Text>No Elements in Table</Text>
+    </>)
   }
   return (
     <Container>

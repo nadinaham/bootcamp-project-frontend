@@ -107,7 +107,10 @@ const Recommend = () => {
   }
 
   if (data.user_read_books.length === 0) {
-    return 'Go add some read books!'
+    return (<>
+    <h2>Recommendation By Author</h2>
+    <h3>Go Add Some Read Books!</h3>
+    </>)
   }
 
   const a = []
