@@ -13,6 +13,7 @@ const Saved_BooksTable = props => {
           <tr>
             <td><Text>Title</Text></td>
             <td><Text>Author</Text></td>
+            <td><Text>Delete</Text></td>
           </tr>
         </thead>
         <tbody>

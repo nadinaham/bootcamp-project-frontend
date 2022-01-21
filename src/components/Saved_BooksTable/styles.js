@@ -42,7 +42,6 @@ export const Container = styled.div`
         text-overflow: ellipsis;
         white-space: nowrap;
         text-align:center;
-        border-left: thin solid ${props => props.theme.colors.brown}
         h2{
           text-align:center;
         }
@@ -51,6 +50,11 @@ export const Container = styled.div`
     tbody{
       max-width: 90%;
       border-radius: 20px;
+      tr{
+        td{
+          border-left: thin solid ${props => props.theme.colors.brown}
+        }
+      }
       tr:nth-of-type(even) {
       background-color: ${props => props.theme.colors.lightheader};
     }

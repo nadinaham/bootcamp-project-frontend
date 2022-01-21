@@ -33,7 +33,6 @@ export const Container = styled.div`
     min-width: 400px;
     max-height: 400px;
     tr{
-      border-bottom: 1px solid ${props => props.theme.colors.brown};
       max-width: 90%;
       td{
         max-width: 300px;
@@ -41,13 +40,17 @@ export const Container = styled.div`
         text-overflow: ellipsis;
         white-space: nowrap;
         text-align:center;
-        border-left: thin solid ${props => props.theme.colors.brown}
         h2{
           text-align:center;
         }
       }
     }
     tbody{
+      tr{
+        td{
+          border-bottom: 1px solid ${props => props.theme.colors.brown};
+        }
+      }
       max-width: 90%;
       border-radius: 20px;
       tr:nth-of-type(even) {
