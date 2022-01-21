@@ -52,7 +52,7 @@ const Register = () => {
         <Input placeholder="Confirm Password" type="password" name="confirm password" value={confirmPass} onChange={e => {setConfirm(e.target.value); setError("")}}/>
       </FlexContainer>
       <div width="50%">
-        <button onClick={function(){
+        <ButtonComponent title="Submit!" onClick={function(){
           if(firstName === "")
           {
             setError("First name cannot be empty")
@@ -70,7 +70,7 @@ const Register = () => {
             setError("Password and Confirmation do not match")
           } else {
             register()
-          }}}>Submit!</button>
+          }}}/>
         <p>{errorMsg}</p>
       </div>
     </>
