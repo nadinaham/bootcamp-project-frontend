@@ -6,6 +6,7 @@ import { Text, Container } from './styles'
 import { ADD_TO_SAVED } from './graphql'
 import { GET_READ_BOOKS_BY_USER } from '../../containers/AlreadyRead/graphql'
 import {GET_SAVED_BOOKS_BY_USER} from '../../containers/Saved_Books/graphql'
+import LoadingComponent from '../LoadingComponent'
 
 const style = arr => {
   try {
@@ -22,7 +23,10 @@ const style = arr => {
 
 const getRandomInt = max => Math.floor(Math.random() * max)
 
-const token = localStorage.getItem('token')
+let token = localStorage.getItem('token')
+if(!token){
+  token ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxOTJkN2RlLTEyNDctNDc0OS1iMDU5LTllODM5ODk0ZDEyNiIsImlhdCI6MTY0Mjc4MTIyNH0.hzGDNwACQRazjeGc8g1mZooYS7_Bm_x45e2Ebv8BD6g'
+}
 const ID = jwt_decode(token).id
 
 const Recommend = () => {
@@ -99,7 +103,7 @@ const Recommend = () => {
   }
 
   if (loading) {
-    return 'Loading...'
+    return <LoadingComponent/>
   }
 
   if (thisError) {
