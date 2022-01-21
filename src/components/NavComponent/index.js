@@ -8,6 +8,9 @@ const NavComponent = ( input ) => {
   const goTo = (string) => {
     history.push("/".concat(string))
   }
+  const logout = () => {
+    localStorage.clear()
+  }
   return(
     <>
       <SiteHeader>Bookify</SiteHeader>
@@ -16,7 +19,7 @@ const NavComponent = ( input ) => {
         <NavItem onClick = {() => goTo("read-books")}> <strong>My books</strong></NavItem>
         <NavItem onClick = {() => goTo("rec-books")}> <strong>Recommendations</strong></NavItem>
         <NavItem onClick = {() => goTo("follows")}> <strong>Friends</strong></NavItem>
-        <NavItem onClick = {() => alert("this page doesn't exist yet, sorry!")}> <strong>Account</strong></NavItem>
+        <NavItem onClick = {() => logout()}> <strong>Logout</strong></NavItem>
       </Nav>
     </>
   )
