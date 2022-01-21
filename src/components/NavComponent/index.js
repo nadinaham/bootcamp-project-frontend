@@ -17,7 +17,7 @@ const NavComponent = ( input ) => {
       <SiteHeader>Bookify</SiteHeader>
       <Nav>
         <NavItem onClick = {() => goTo("home")}> <strong> Home </strong> </NavItem>
-        <NavItem onClick = {() => goTo("read-books")}> <strong>My books</strong></NavItem>
+        <NavItem onClick = {() => goTo("read-books")}> <strong>My Books</strong></NavItem>
         <NavItem onClick = {() => goTo("rec-books")}> <strong>Recommendations</strong></NavItem>
         <NavItem onClick = {() => goTo("follows")}> <strong>Friends</strong></NavItem>
         <NavItem onClick = {() => logout()}> <strong>Logout</strong></NavItem>
