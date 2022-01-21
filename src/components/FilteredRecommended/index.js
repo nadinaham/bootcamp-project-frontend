@@ -33,7 +33,7 @@ const Recommend = () => {
   useEffect(() => {
     if (data) {
       console.log(data)
-      const allAuthorsString = data.user_read_books[getRandomInt(data.user_read_books.length)].author
+      const allAuthorsString = 'test' // ERROR HERE FROM .author data.user_read_books[getRandomInt(data.user_read_books.length)].author
       const allAuthorsArray = allAuthorsString.split(', ')
       const randAuthor = allAuthorsArray[getRandomInt(allAuthorsArray.length)]
       console.log(randAuthor)

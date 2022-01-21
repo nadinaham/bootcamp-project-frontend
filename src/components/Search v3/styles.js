@@ -14,7 +14,7 @@ export const HeaderRow = styled.tr`
 `
 
 export const Container = styled.div`
-  height: 80vh;
+  height: 75vh;
   width: 100%;
   border-radius: 20px;
   background-color: ${props => props.theme.colors.main}
@@ -25,6 +25,7 @@ export const Container = styled.div`
   text-align: center;
   z-index: 1;
   table{
+    max-height: 90%;
     margin-left: 5%;
     width: 90%;
     max-width: 90%;
@@ -36,6 +37,7 @@ export const Container = styled.div`
     font-size: 1.2em;
     table-layout: fixed;
     min-width: 400px;
+    max-height: 400px;
     tr{
       border-bottom: 1px solid ${props => props.theme.colors.brown};
       max-width: 90%;
