@@ -8,7 +8,7 @@ import Home from './containers/Home'
 import Register from './containers/Register'
 import Login from './containers/Login'
 import AlreadyRead from './containers/AlreadyRead'
-import Rec_Books from './containers/Rec_Books'
+import Rec_Books from './containers/Rec_Books_v2'
 import Saved_Books from './containers/Saved_Books'
 import Friend_RecBooks from './containers/Friend_RecBooks'
 import Follows from './containers/Follows'
@@ -25,7 +25,7 @@ const App = () => (
             <Route path="/read-books" component={AlreadyRead} />
             <Route path="/rec-books" component={Rec_Books} />
             <Route path="/saved-books" component={Saved_Books} />
-            <Route path="/friend-rec" component={Friend_RecBooks} />
+            <Route path="/friend-rec" component={Rec_Books} />
             <Route path="/follows" component={Follows} />
             <Route path="/home" component={Home} />
             <Route path="/" component={Greet} />

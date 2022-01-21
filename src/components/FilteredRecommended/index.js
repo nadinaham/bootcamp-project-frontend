@@ -7,7 +7,7 @@ const style = arr => {
   try {
     let sorted = ''
     for (let i = 0; i < arr.length - 1; i++) {
-      sorted += arr[i] + ', '
+      sorted += `${arr[i]}, `
     }
     sorted += arr[arr.length - 1]
     return sorted
@@ -16,39 +16,38 @@ const style = arr => {
   }
 }
 
-const getRandomInt = (max) => {
-  return Math.floor(Math.random() * max);
-}
+const getRandomInt = max => Math.floor(Math.random() * max)
 
 const Recommend = () => {
   const [result, setResult] = useState([])
   const [error, setError] = useState(false)
 
   const { loading, error: thisError, data } = useQuery(GET_USER_READ_BOOKS, {
-    variables: { userID: '44200099-1227-4254-9f3a-8490789c8c35' },
+    variables: { userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119' },
   })
 
   useEffect(() => {
-    if(data) {
-        const allAuthorsString = data.user_read_books[getRandomInt(data.user_read_books.length)].author
-        const allAuthorsArray = allAuthorsString.split(', ')
-        const randAuthor = allAuthorsArray[getRandomInt(allAuthorsArray.length)]
-        console.log(randAuthor)
-        async function fetchBookList() {
-          try {
-            const response = await fetch(
-              `https://www.googleapis.com/books/v1/volumes?q=inauthor:${randAuthor}`
-            )
-            const json = await response.json()
-            setResult(
-              json.items.map(item => [item.volumeInfo.title, item.volumeInfo.authors, item.id]),
-            )
-          } catch (e) {
-            setError(true)
-          }
+    if (data) {
+      console.log(data)
+      const allAuthorsString = data.user_read_books[getRandomInt(data.user_read_books.length)].author
+      const allAuthorsArray = allAuthorsString.split(', ')
+      const randAuthor = allAuthorsArray[getRandomInt(allAuthorsArray.length)]
+      console.log(randAuthor)
+      async function fetchBookList() {
+        try {
+          const response = await fetch(
+            `https://www.googleapis.com/books/v1/volumes?q=inauthor:${randAuthor}`,
+          )
+          const json = await response.json()
+          setResult(
+            json.items.map(item => [item.volumeInfo.title, item.volumeInfo.authors, item.id]),
+          )
+        } catch (e) {
+          setError(true)
         }
-        fetchBookList()
-        }
+      }
+      fetchBookList()
+    }
   }, [data])
 
   if (loading) {

@@ -5,6 +5,7 @@ import { GET_READ_BOOKS_BY_USER, ADD_TO_ALREADY_READ } from './graphql'
 import AlreadyReadTable from '../../components/AlreadyReadTable'
 import Search from '../../components/Search v3'
 import { useHistory } from 'react-router-dom'
+import NavComponent from '../../components/NavComponent'
 
 const AlreadyRead = () => {
     const history = useHistory()
@@ -15,13 +16,13 @@ const AlreadyRead = () => {
 
   // set relevant states
   // const [bookID, setBookID] = useState('')
-  const [ID, setID] = useState('4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050')
+  const [ID, setID] = useState('a4e7faf4-3d4b-4124-b221-b46fbe4ec119')
   // const [title, setTitle] = useState('')
   // const [author, setAuthor] = useState('')
 
   // import data from backend - check order of this????
   const { loading: queryLoading, error: queryError, data: alreadyReadData } = useQuery(GET_READ_BOOKS_BY_USER, {
-    variables: { userID: '4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050' },
+    variables: { userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119' },
   })
 
   // const [handleAddAlready, { loading, error }] = useMutation(ADD_TO_ALREADY_READ, {
@@ -83,7 +84,7 @@ const AlreadyRead = () => {
   // fix del/rec
   return (
     <Container>
-
+      <NavComponent/>
       <Search header="Book Search" subHeader="Search for books by title or author!" desc="e.g. Harry Potter or Charles Dickens" />
       <AlreadyReadTable
         data={alreadyReadData}
