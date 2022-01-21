@@ -4,6 +4,7 @@ import { Container, Text } from './styles'
 import { GET_READ_BOOKS_BY_USER } from './graphql'
 import Read_BooksTable from '../../components/Read_BooksTable'
 import { useHistory } from 'react-router-dom'
+import LoadingComponent from '../../components/LoadingComponent'
 
 const Read_Books = () => {
     const history = useHistory()
@@ -16,7 +17,7 @@ const Read_Books = () => {
         variables: {userID: ID}})
     if (loading) 
     {
-        return <Container><Text>Loading...</Text></Container>
+        return <LoadingComponent/>
     } else if (error)
     {
         return <Container><Text>Error!</Text></Container>

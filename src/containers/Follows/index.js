@@ -7,7 +7,8 @@ import FollowTable2 from '../../components/FollowTable2'
 import Search from '../../components/Search v1'
 import UserSearch from '../../components/Search v2'
 import { useHistory } from 'react-router-dom'
-
+import NavComponent from '../../components/NavComponent'
+import CardComponent from '../../components/CardComponent'
 
 const ID = "d74c2b6e-ae25-4153-991f-1fa44fdff81e"
 
@@ -48,13 +49,24 @@ const Follows = () => {
     if(!token){
         history.push('/login')
     }
-    return (
-        <Container>
+    const content1 = (
+        <>
             <UserSearch header="User Search" subHeader="Search for the email of other users!" desc="e.g. example@example.com"/>
-            <Search header="Book Search" subHeader="Search for books to recommend to those following you!" desc="e.g. Harry Potter or Charles Dickens"/>
             <FollowTableP1 />
+        </>
+    )
+    const content2 = (
+        <>
+            <Search header="Book Search" subHeader="Search for books to recommend to those following you!" desc="e.g. Harry Potter or Charles Dickens"/>
             <FollowTableP2 />
-        </Container>
+        </>
+    )
+    return (
+        <> 
+            <NavComponent/>
+            <CardComponent content = {content1} />
+            <CardComponent content = {content2} />
+        </>
     )
 }
 
