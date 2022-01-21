@@ -5,7 +5,7 @@ import PersonItem from '../PersonItem'
 const FollowTable = (props) => {
   if (props.data.followsByFollowed.length === 0)
   {
-    return (<Text>No Elements in Table</Text>)
+    return (<Text>No followers at the moment!</Text>)
   } else {
     return (
         <Container>

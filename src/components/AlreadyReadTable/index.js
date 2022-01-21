@@ -12,8 +12,6 @@ const AlreadyReadTable = (props) => {
       <table>
         <thead>
           <tr>
-            <th><Text>User ID</Text></th>
-            <th><Text>Book ID</Text></th>
             <th><Text>Title</Text></th>
             <th><Text>Author</Text></th>
             <th><Text>Delete</Text></th>
