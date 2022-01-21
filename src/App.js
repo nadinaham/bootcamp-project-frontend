@@ -25,7 +25,7 @@ const App = () => (
             <Route path="/read-books" component={AlreadyRead} />
             <Route path="/rec-books" component={Rec_Books} />
             <Route path="/saved-books" component={Saved_Books} />
-            <Route path="/friend-rec" component={Rec_Books} />
+            <Route path="/friend-rec" component={Friend_RecBooks} />
             <Route path="/follows" component={Follows} />
             <Route path="/home" component={Home} />
             <Route path="/" component={Greet} />
