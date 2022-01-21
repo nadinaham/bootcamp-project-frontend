@@ -5,7 +5,6 @@ import jwt_decode from 'jwt-decode'
 import { Text, Container } from './styles'
 import { ADD_TO_SAVED } from './graphql'
 import { GET_READ_BOOKS_BY_USER } from '../../containers/AlreadyRead/graphql'
-import jwt_decode from "jwt-decode"
 import {GET_SAVED_BOOKS_BY_USER} from '../../containers/Saved_Books/graphql'
 
 const style = arr => {
@@ -33,13 +32,6 @@ const Recommend = () => {
 
   const [result, setResult] = useState([])
   const [error, setError] = useState(false)
-
-  const history = useHistory()
-  const token = localStorage.getItem('token')
-  if (!token) {
-    history.push('/login')
-  }
-  const ID = jwt_decode(token).id
 
   const { loading, error: thisError, data } = useQuery(GET_READ_BOOKS_BY_USER, {
     variables: { userID: ID },
