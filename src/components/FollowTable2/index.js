@@ -5,7 +5,7 @@ import PersonItem from '../PersonItem2'
 
 const FollowTable2 = props => {
   if (props.data.followsByFollower.length === 0) {
-    return (<Text>You aren't following anyone yet</Text>)
+    return (<><Text>Who Are You Following?</Text><Text>You aren't following anyone yet</Text></>)
   }
 
   return (
