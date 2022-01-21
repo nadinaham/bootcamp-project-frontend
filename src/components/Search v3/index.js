@@ -114,7 +114,7 @@ const Search = props => {
           <InputContainer>
             <input type="search" placeholder={props.desc} onChange={e => setSearch(e.target.value)} />
           </InputContainer>
-          <Button content="Search" />
+          <Button title="Search" />
         </form>
 
 

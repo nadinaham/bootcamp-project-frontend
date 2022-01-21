@@ -79,7 +79,7 @@ const UserSearch = props => {
           <InputContainer>
             <input type="search" placeholder={props.desc} onChange={e => setSearch(e.target.value)} />
           </InputContainer>
-          <Button content="Search" />
+          <Button title="Search" />
         </form>
       </Container>
     )
@@ -104,7 +104,7 @@ const UserSearch = props => {
           <InputContainer>
             <input type="search" placeholder={props.desc} onChange={e => setSearch(e.target.value)} />
           </InputContainer>
-          <Button content="Search" />
+          <Button title="Search" />
         </form>
 
         <Text>No Users Found</Text>
@@ -128,7 +128,7 @@ const UserSearch = props => {
         <InputContainer>
           <input type="search" placeholder={props.desc} onChange={e => setSearch(e.target.value)} />
         </InputContainer>
-        <Button content="Search" />
+        <Button title="Search" />
       </form>
 
       <table>
