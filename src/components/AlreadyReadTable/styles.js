@@ -42,7 +42,7 @@ export const Container = styled.div`
         text-overflow: ellipsis;
         white-space: nowrap;
         text-align:center;
-        border-left: thin solid ${props => props.theme.colors.brown}
+        border-left: thin solid ${props => props.theme.colors.brown};
         h2{
           text-align:center;
         }
@@ -59,7 +59,7 @@ export const Container = styled.div`
     }
     tr:last-of-type {
       border-radius: 0px 0px 20px 20px;
-    } 
+    }
     }
 
   }
