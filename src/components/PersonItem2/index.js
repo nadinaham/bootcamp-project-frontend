@@ -12,6 +12,7 @@ const PersonItem = (prop) => {
         <td><Text>Loading</Text></td>
         <td><Text>Loading</Text></td>
         <td><Text>Loading</Text></td>
+        <td><Text>Loading</Text></td>
       </tr>
       )
   }
@@ -19,9 +20,10 @@ const PersonItem = (prop) => {
   {
     return (
       <tr>
-        <td><Text>Loading</Text></td>
-        <td><Text>Loading</Text></td>
-        <td><Text>Loading</Text></td>
+        <td><Text>Error</Text></td>
+        <td><Text>Error</Text></td>
+        <td><Text>Error</Text></td>
+        <td><Text>Error</Text></td>
       </tr>
       )
   }
@@ -31,6 +33,7 @@ const PersonItem = (prop) => {
     <td><Text>{data.user.firstName}</Text></td>
     <td><Text>{data.user.lastName}</Text></td>
     <td><Text>{data.user.email}</Text></td>
+    <td><button>Hello!</button></td>
   </tr>
   )
 }

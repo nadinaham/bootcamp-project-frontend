@@ -14,7 +14,7 @@ const AlreadyRead = () => {
     const history = useHistory()
     const token = localStorage.getItem('token')
     if(!token){
-      history.push('/login')
+      history.push('/')
     }
 
   // set relevant states

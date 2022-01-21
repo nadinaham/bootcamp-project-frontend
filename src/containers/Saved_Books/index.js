@@ -13,7 +13,7 @@ const Saved_Books = () => {
   const history = useHistory()
   const token = localStorage.getItem('token')
   if (!token) {
-    history.push('/login')
+    history.push('/')
   }
   const ID = jwt_decode(token).id
   const { loading, error, data } = useQuery(GET_SAVED_BOOKS_BY_USER, { variables: { userID: ID } })

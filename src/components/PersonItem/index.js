@@ -19,9 +19,9 @@ const PersonItem = (prop) => {
   {
     return (
       <tr>
-        <td><Text>Loading</Text></td>
-        <td><Text>Loading</Text></td>
-        <td><Text>Loading</Text></td>
+        <td><Text>Error</Text></td>
+        <td><Text>Error</Text></td>
+        <td><Text>Error</Text></td>
       </tr>
       )
   }

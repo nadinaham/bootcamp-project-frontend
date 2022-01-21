@@ -11,11 +11,9 @@ import UserSearch from '../../components/Search v2'
 import NavComponent from '../../components/NavComponent'
 import CardComponent from '../../components/CardComponent'
 
-const token = localStorage.getItem('token')
-const ID = jwt_decode(token).id
-const FollowTableP1 = () => {
+const FollowTableP1 = (prop) => {
   // Find people who follow user
-  const { loading, error, data } = useQuery(GET_FOLLOWS_BY_USER, { variables: { followedUserID: ID } })
+  const { loading, error, data } = useQuery(GET_FOLLOWS_BY_USER, { variables: { followedUserID: prop.id } })
   if (loading) {
     return <Container><Text>Loading...</Text></Container>
   } if (error) {
@@ -27,9 +25,9 @@ const FollowTableP1 = () => {
 }
 
 
-const FollowTableP2 = () => {
+const FollowTableP2 = (prop) => {
   // Find people who user follows
-  const { loading, error, data } = useQuery(GET_FOLLOWERS_BY_USER, { variables: { followingUserID: ID }})
+  const { loading, error, data } = useQuery(GET_FOLLOWERS_BY_USER, { variables: { followingUserID: prop.id }})
   if (loading) {
     return <Container><Text>Loading...</Text></Container>
   } if (error) {
@@ -44,17 +42,19 @@ const Follows = () => {
   const history = useHistory()
   const token = localStorage.getItem('token')
   if (!token) {
-    history.push('/login')
+    history.push('/')
   }
+  const ID = jwt_decode(token).id
+
   const content1 = (
     <>
       <UserSearch header="User Search" subHeader="Search for the email of other users!" desc="e.g. example@example.com" />
-      <FollowTableP2 />
+      <FollowTableP2 id={ID}/>
     </>
   )
   const content2 = (
     <>
-      <FollowTableP1 />
+      <FollowTableP1 id={ID}/>
     </>
   )
   return (
