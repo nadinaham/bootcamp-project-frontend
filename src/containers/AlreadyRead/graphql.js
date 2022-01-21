@@ -6,6 +6,8 @@ export const GET_READ_BOOKS_BY_USER = gql`
       userID: $userID
     ) 
     {
+      id
+      userID
       bookID
       title
       author

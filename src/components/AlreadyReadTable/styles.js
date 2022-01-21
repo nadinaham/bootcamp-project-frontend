@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Text = styled.h1`
-  color: white;
+  color: black;
   font: 'Times New Roman';
   font-size: 20px;
   text-align: center;

@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-const GET_USER_READ_BOOKS = gql`
+export const GET_USER_READ_BOOKS = gql`
   query user_read_books($userID: ID!) {
     user_read_books(
       userID: $userID
@@ -13,4 +13,14 @@ const GET_USER_READ_BOOKS = gql`
   }
 `
 
-export default GET_USER_READ_BOOKS
+export const ADD_TO_SAVED = gql`
+ 	mutation addBooktoSaved($input: AddBookList!) {
+    addBooktoSaved(input: $input) {
+            id
+            userID
+            bookID
+            title
+            author
+        }
+    }
+`

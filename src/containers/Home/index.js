@@ -1,18 +1,14 @@
 import React from 'react'
-import CardComponent from '../../components/CardComponent'
+import Saved_Books from '../Saved_Books'
+import Search from '../../components/Search v3'
 import NavComponent from '../../components/NavComponent'
-import Search from '../../components/Search v1'
 
 const Home = () => {
-  const content = (
-    <>
-      <Search header="Book Search" subHeader="Search for books by title or author!" desc="e.g. Harry Potter or Charles Dickens"/>
-    </>
-  )
   return (
     <> 
-      <NavComponent/>
-        <CardComponent content = {content} />
+      <NavComponent />
+      <Search header="Book Search" subHeader="What Books have you Read?" desc="e.g. Harry Potter or Charles Dickens" />
+      <Saved_Books />
     </>
   )
 }

@@ -19,3 +19,14 @@ export const GET_FOLLOWERS_BY_USER = gql`
         }  
     }
 `
+
+export const GET_USER_BY_ID = gql`
+    query user($id: ID!) {
+        user(id: $id){
+            id
+            email
+            firstName
+            lastName
+        }  
+    }
+`

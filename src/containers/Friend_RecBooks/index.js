@@ -4,6 +4,8 @@ import { Container, Text } from './styles'
 import { GET_FRIEND_BOOKS_BY_USER } from './graphql'
 import Friend_RecBooksTable from '../../components/Friend_RecBooksTable'
 import { useHistory } from 'react-router-dom'
+import jwt_decode from "jwt-decode"
+
 
 const Friend_RecBooks = () => {
     const history = useHistory()
@@ -11,7 +13,7 @@ const Friend_RecBooks = () => {
     if(!token){
         history.push('/login')
     }
-    const ID = "22b8acfb-3300-4632-84bc-aa66e76cbdd7"
+    const ID = jwt_decode(token).id
     const {loading, error, data} = useQuery(GET_FRIEND_BOOKS_BY_USER, {
         variables: {recipientID: ID}})
     if (loading) 

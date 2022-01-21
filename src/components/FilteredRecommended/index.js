@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useHistory } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 import { Text, Container } from './styles'
-import GET_USER_READ_BOOKS from './graphql'
-import { GET_READ_BOOKS_BY_USER, ADD_TO_ALREADY_READ } from '../../containers/AlreadyRead/graphql'
-
+import { ADD_TO_SAVED } from './graphql'
+import { GET_READ_BOOKS_BY_USER } from '../../containers/AlreadyRead/graphql'
+import {GET_SAVED_BOOKS_BY_USER} from '../../containers/Saved_Books/graphql'
 
 const style = arr => {
   try {
@@ -20,6 +22,9 @@ const style = arr => {
 
 const getRandomInt = max => Math.floor(Math.random() * max)
 
+const token = localStorage.getItem('token')
+const ID = jwt_decode(token).id
+
 const Recommend = () => {
   const [bookID, setBook] = useState('')
   const [title, setTitle] = useState('')
@@ -28,17 +33,16 @@ const Recommend = () => {
   const [result, setResult] = useState([])
   const [error, setError] = useState(false)
 
-  const { loading, error: thisError, data } = useQuery(GET_USER_READ_BOOKS, {
-    variables: { userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119' },
+  const { loading, error: thisError, data } = useQuery(GET_READ_BOOKS_BY_USER, {
+    variables: { userID: ID },
   })
 
   useEffect(() => {
-    if (data) {
-      console.log(data)
-      const allAuthorsString = 'test' // ERROR HERE FROM .author data.user_read_books[getRandomInt(data.user_read_books.length)].author
+    if (data && data.user_read_books.length > 0) {
+      console.log(data.user_read_books)
+      const allAuthorsString = data.user_read_books[getRandomInt(data.user_read_books.length)].author
       const allAuthorsArray = allAuthorsString.split(', ')
       const randAuthor = allAuthorsArray[getRandomInt(allAuthorsArray.length)]
-      console.log(randAuthor)
       async function fetchBookList() {
         try {
           const response = await fetch(
@@ -56,10 +60,10 @@ const Recommend = () => {
     }
   }, [data])
 
-  const [handleAddAlready, { loading: thisLoading, error: thisThisError }] = useMutation(ADD_TO_ALREADY_READ, {
+  const [handleAddAlready, { loading: thisLoading, error: thisThisError }] = useMutation(ADD_TO_SAVED, {
     variables: {
       input: {
-        userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119',
+        userID: ID,
         bookID,
         title,
         author,
@@ -67,6 +71,7 @@ const Recommend = () => {
     },
     onCompleted: data => console.log('done', data),
     onError: err => console.log('error ', err),
+    refetchQueries: () => [{ query: GET_SAVED_BOOKS_BY_USER, variables: {userID: ID} }],
     update: (client, { data: { handleAddAlready } }) => {
       try {
         const data = client.readQuery({ query: GET_READ_BOOKS_BY_USER })
@@ -82,13 +87,13 @@ const Recommend = () => {
 
 
   const setEverything = async (tit, aut, boo) => {
-    const promise1 = new Promise((resolve) => {
+    const promise1 = new Promise(resolve => {
       setBook(boo)
       setTitle(tit)
       setAuthor(aut)
       resolve('test')
     })
-    promise1.then((val) => {
+    promise1.then(val => {
       handleAddAlready()
     })
   }
@@ -99,6 +104,13 @@ const Recommend = () => {
 
   if (thisError) {
     return 'Error'
+  }
+
+  if (data.user_read_books.length === 0) {
+    return (<>
+    <h2>Recommendation By Author</h2>
+    <h3>Go Add Some Read Books!</h3>
+    </>)
   }
 
   const a = []
@@ -113,7 +125,7 @@ const Recommend = () => {
       {error === true ? (<h4>Bruh no books big sad very bad</h4>)
         : (
           <table>
-            <tbody>
+            <thead>
               <tr>
                 <td>
                   <Text>Title</Text>
@@ -121,7 +133,12 @@ const Recommend = () => {
                 <td>
                   <Text>Authors</Text>
                 </td>
+                <td>
+                  <Text>Add to Saved</Text>
+                </td>
               </tr>
+            </thead>
+            <tbody>
               {filtered.map(item => (
                 <tr>
                   <td>{item[0]}</td>

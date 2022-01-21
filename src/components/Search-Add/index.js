@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { GET_READ_BOOKS_BY_USER, ADD_TO_ALREADY_READ } from '../../containers/AlreadyRead/graphql'
-import jwt_decode from "jwt-decode"
 
 import {
   TableHeader, HeaderRow, Container, Header, SubHeader, InputContainer,
@@ -34,10 +33,6 @@ const Search = props => {
 
   const [startUp, setStartUp] = useState(false)
 
-  const token = localStorage.getItem('token')
-  const ID = jwt_decode(token).id
-
-
   useEffect(() => {
     async function fetchBookList() {
       try {
@@ -61,7 +56,7 @@ const Search = props => {
   const [handleAddAlready, { loading, error: thisError }] = useMutation(ADD_TO_ALREADY_READ, {
     variables: {
       input: {
-        userID: ID,
+        userID: '4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050',
         bookID,
         title,
         author,
@@ -69,7 +64,6 @@ const Search = props => {
     },
     onCompleted: data => console.log('done', data),
     onError: err => console.log('error ', err),
-    refetchQueries: () => [{ query: GET_READ_BOOKS_BY_USER, variables: {userID: ID} }],
     update: (client, { data: { handleAddAlready } }) => {
       try {
         const data = client.readQuery({ query: GET_READ_BOOKS_BY_USER })

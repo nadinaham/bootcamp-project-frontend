@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { GET_USER_BY_ID } from '../../containers/Follows/graphql'
 
 const PersonItem = (prop) => {
-  const { loading, error, data } = useQuery(GET_USER_BY_ID, {variables: {id: prop.data.followingUserID}})
+  const { loading, error, data } = useQuery(GET_USER_BY_ID, {variables: {id: prop.data.followedUserID}})
   if(loading)
   {
     return (

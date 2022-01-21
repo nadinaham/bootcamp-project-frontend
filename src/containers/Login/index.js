@@ -24,6 +24,9 @@ const Login = () => {
     onCompleted: ({ login: { token } }) => {
       localStorage.setItem('token', token)
       history.push('/home')
+      console.log(token)
+      console.log(email)
+      console.log(pass)
     },
     onError: () => {
       setError('No User Found!')

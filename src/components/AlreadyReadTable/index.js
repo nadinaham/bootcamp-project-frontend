@@ -2,9 +2,12 @@ import React from 'react'
 import { Container, Text } from './styles'
 import BookItem from '../BookItem'
 
-const AlreadyReadTable = props => {
+const AlreadyReadTable = (props) => {
   if (props.data.user_read_books.length === 0) {
-    return (<Text>No Elements in Table</Text>)
+    return (<>
+    <Text>Read Books Table!</Text>
+    <Text>No Elements in Table</Text>
+    </>)
   }
   return (
     <Container>
@@ -12,8 +15,6 @@ const AlreadyReadTable = props => {
       <table>
         <thead>
           <tr>
-            <th><Text>User ID</Text></th>
-            <th><Text>Book ID</Text></th>
             <th><Text>Title</Text></th>
             <th><Text>Author</Text></th>
             <th><Text>Delete</Text></th>
