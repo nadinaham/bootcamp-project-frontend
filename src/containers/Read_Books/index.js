@@ -4,6 +4,7 @@ import { Container, Text } from './styles'
 import { GET_READ_BOOKS_BY_USER } from './graphql'
 import Read_BooksTable from '../../components/Read_BooksTable'
 import { useHistory } from 'react-router-dom'
+import jwt_decode from "jwt-decode"
 
 const Read_Books = () => {
     const history = useHistory()
@@ -11,7 +12,7 @@ const Read_Books = () => {
     if(!token){
         history.push('/login')
     }
-    const ID = "4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050"
+    const ID = jwt_decode(token).id
     const {loading, error, data} = useQuery(GET_READ_BOOKS_BY_USER, {
         variables: {userID: ID}})
     if (loading) 

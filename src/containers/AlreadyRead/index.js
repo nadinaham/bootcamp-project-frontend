@@ -7,6 +7,8 @@ import Search from '../../components/Search v3'
 import { useHistory } from 'react-router-dom'
 import NavComponent from '../../components/NavComponent'
 import CardComponent from '../../components/CardComponent'
+import jwt_decode from "jwt-decode"
+
 
 const AlreadyRead = () => {
     const history = useHistory()
@@ -17,13 +19,13 @@ const AlreadyRead = () => {
 
   // set relevant states
   // const [bookID, setBookID] = useState('')
-  const [ID, setID] = useState('a4e7faf4-3d4b-4124-b221-b46fbe4ec119')
+  const ID = jwt_decode(token).id
   // const [title, setTitle] = useState('')
   // const [author, setAuthor] = useState('')
 
   // import data from backend - check order of this????
   const { loading: queryLoading, error: queryError, data: alreadyReadData } = useQuery(GET_READ_BOOKS_BY_USER, {
-    variables: { userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119' },
+    variables: { userID: ID },
   })
 
   // const [handleAddAlready, { loading, error }] = useMutation(ADD_TO_ALREADY_READ, {
@@ -52,9 +54,6 @@ const AlreadyRead = () => {
 
   if (queryLoading) return 'Loading...'
   if (queryError) return `Error: ${queryError}`
-
-  console.log(alreadyReadData)
-  console.log(ID)
   // const [handleDeleteAlready] = useMutation(ADD_FRIEND, {
   //   update: (client, { data: { addFriend } }) => {
   //   try {

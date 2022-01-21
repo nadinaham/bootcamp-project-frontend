@@ -7,10 +7,10 @@ import FollowTable2 from '../../components/FollowTable2'
 import Search from '../../components/Search v1'
 import UserSearch from '../../components/Search v2'
 import { useHistory } from 'react-router-dom'
+import jwt_decode from "jwt-decode"
 
-
-const ID = "d74c2b6e-ae25-4153-991f-1fa44fdff81e"
-
+const token = localStorage.getItem('token')
+const ID = jwt_decode(token).id
 const FollowTableP1 = () => {
     const {loading, error, data} = useQuery(GET_FOLLOWS_BY_USER, {
         variables: {followedUserID: ID}})
