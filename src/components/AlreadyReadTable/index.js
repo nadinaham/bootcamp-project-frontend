@@ -12,11 +12,11 @@ const AlreadyReadTable = props => {
       <table>
         <thead>
           <tr>
-            <td><Text>User ID</Text></td>
-            <td><Text>Book ID</Text></td>
-            <td><Text>Title</Text></td>
-            <td><Text>Author</Text></td>
-            <td><Text>Delete</Text></td>
+            <th><Text>User ID</Text></th>
+            <th><Text>Book ID</Text></th>
+            <th><Text>Title</Text></th>
+            <th><Text>Author</Text></th>
+            <th><Text>Delete</Text></th>
           </tr>
         </thead>
         <tbody>
