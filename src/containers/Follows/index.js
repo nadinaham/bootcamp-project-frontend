@@ -53,13 +53,13 @@ const Follows = () => {
     const content1 = (
         <>
             <UserSearch header="User Search" subHeader="Search for the email of other users!" desc="e.g. example@example.com"/>
-            <FollowTableP1 />
+            <FollowTableP2 />
         </>
     )
     const content2 = (
         <>
             <Search header="Book Search" subHeader="Search for books to recommend to those following you!" desc="e.g. Harry Potter or Charles Dickens"/>
-            <FollowTableP2 />
+            <FollowTableP1 />
         </>
     )
     return (

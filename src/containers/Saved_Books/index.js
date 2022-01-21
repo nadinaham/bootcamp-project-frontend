@@ -24,12 +24,12 @@ const Saved_Books = () => {
   }
   const content = (
     <>
+      <Text>Saved Books:</Text>
       <Saved_BooksTable data={data} />
     </>
   )
   return (
     <>
-      <NavComponent />
       <CardComponent content = {content} />
     </>
   )

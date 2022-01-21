@@ -10,3 +10,12 @@ export const GET_USER_BY_EMAIL = gql`
         }  
     }
 `
+
+export const ADD_FOLLOW = gql`
+ 	mutation addFollow($input: AddFollowPair!) {
+     addFollow(input: $input){
+        followedUserID
+        followingUserID
+     }
+    }
+`

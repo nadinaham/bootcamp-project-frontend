@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Text } from './styles'
-import PersonItem from '../PersonItem'
+import PersonItem from '../PersonItem2'
 
 const FollowTable2 = (props) => {
   if (props.data.followsByFollower.length === 0)
@@ -19,7 +19,7 @@ const FollowTable2 = (props) => {
         </thead>
         <tbody>
           {props.data.followsByFollower.map(friend => (
-            <PersonItem key={friend.id}  followedUserID={friend.followedUserID} followingUserID={friend.followingUserID}/>
+            <PersonItem key={friend.id}  followedUserID={friend.followedUserID} followingUserID={friend.followingUserID} currentlyReading={friend.currentlyReading}/>
           ))}
         </tbody> 
             </table>
