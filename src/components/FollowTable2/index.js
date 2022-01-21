@@ -17,6 +17,7 @@ const FollowTable2 = props => {
             <td><Text>First Name</Text></td>
             <td><Text>Last Name</Text></td>
             <td><Text>Email</Text></td>
+            <td><Text>Delete</Text></td>
           </tr>
         </thead>
         <tbody>
