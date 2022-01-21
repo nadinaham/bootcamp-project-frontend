@@ -18,13 +18,13 @@ const AlreadyRead = () => {
 
   // set relevant states
   // const [bookID, setBookID] = useState('')
-  const [ID, setID] = useState('4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050')
+  const [ID, setID] = useState('a4e7faf4-3d4b-4124-b221-b46fbe4ec119')
   // const [title, setTitle] = useState('')
   // const [author, setAuthor] = useState('')
 
   // import data from backend - check order of this????
   const { loading: queryLoading, error: queryError, data: alreadyReadData } = useQuery(GET_READ_BOOKS_BY_USER, {
-    variables: { userID: '4e50ba9f-9b4d-42f2-a8c0-e3d3c22c1050' },
+    variables: { userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119' },
   })
 
   // const [handleAddAlready, { loading, error }] = useMutation(ADD_TO_ALREADY_READ, {
@@ -84,23 +84,25 @@ const AlreadyRead = () => {
   // }
   // })
   // fix del/rec
-  if(alreadyReadData.user_read_books === ''){
-    return <div>test</div>
-  }
   const content = (
     <>
       <Search header="Book Search" subHeader="Search for books by title or author!" desc="e.g. Harry Potter or Charles Dickens" />
+    </>
+  )
+  const content2 = (
+    <>
       <AlreadyReadTable
         data={alreadyReadData}
       />
     </>
   )
+
+
   return (
-    <> 
+    <>
       <NavComponent/>
       <CardComponent content = {content} />
-      <div>{alreadyReadData.user_read_books}</div>
-      <div>test</div>
+      <CardComponent content = {content2} />
     </>
   )
 
