@@ -8,6 +8,7 @@ import {
 import { GET_USER_BY_EMAIL, ADD_FOLLOW } from './graphql'
 import Button from '../ButtonComponent'
 import { GET_FOLLOWERS_BY_USER } from '../../containers/Follows/graphql'
+import ButtonComponent from '../ButtonComponent'
 
 
 const UserSearch = props => {
@@ -149,13 +150,7 @@ const UserSearch = props => {
           <tr>
             <td>{data.userByEmail.firstName}</td>
             <td>{data.userByEmail.lastName}</td>
-            <td>
-              <button
-                type="submit"
-                onClick={() => { setEverything(data.userByEmail.id); goTo('follows') }}
-              >
-                    Add
-              </button>
+            <td><ButtonComponent title="Add" onClick={() => { setEverything(data.userByEmail.id); goTo('follows') }}/>
             </td>
           </tr>
         </tbody>

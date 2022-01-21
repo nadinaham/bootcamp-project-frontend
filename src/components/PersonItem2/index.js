@@ -5,6 +5,7 @@ import { GET_USER_BY_ID } from '../../containers/Follows/graphql'
 import { DELETE_FOLLOW } from './graphql'
 import { GET_FOLLOWERS_BY_USER } from '../../containers/Follows/graphql'
 import jwt_decode from 'jwt-decode'
+import ButtonComponent from '../ButtonComponent'
 
 const PersonItem = (prop) => {
   let token = localStorage.getItem('token')
@@ -66,12 +67,7 @@ const PersonItem = (prop) => {
     <td><Text>{data.user.firstName}</Text></td>
     <td><Text>{data.user.lastName}</Text></td>
     <td><Text>{data.user.email}</Text></td>
-    <td><button
-          type="submit"
-          onClick={() => { handleDeleteAlready() }}
-        >
-        Delete
-        </button></td>
+    <td><ButtonComponent title="Delete" onClick={() => { handleDeleteAlready() }}/></td>
   </tr>
   )
 }

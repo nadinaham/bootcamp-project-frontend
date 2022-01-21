@@ -7,6 +7,7 @@ import {
   TableHeader, HeaderRow, Container, Header, SubHeader, InputContainer,
 } from './styles'
 import Button from '../ButtonComponent'
+import ButtonComponent from '../ButtonComponent'
 
 const style = arr => {
   try {
@@ -137,7 +138,7 @@ const Search = props => {
         <InputContainer>
           <input type="search" placeholder={props.desc} onChange={e => setSearch(e.target.value)} />
         </InputContainer>
-        <Button content="Search" />
+        <ButtonComponent title="Search" />
       </form>
 
       {error === true ? (<h4>Bruh no books big sad very bad</h4>)
@@ -161,13 +162,7 @@ const Search = props => {
                 <tr>
                   <td>{item[0]}</td>
                   <td><i>{style(item[1])}</i></td>
-                  <td>
-                    <button
-                      type="submit"
-                      onClick={() => { setEverything(item[0], style(item[1]), item[2]) }}
-                    >
-                        Add
-                    </button>
+                  <td><ButtonComponent title="Add" onClick={() => { setEverything(item[0], style(item[1]), item[2]) }}/>
                   </td>
                 </tr>
               ))}

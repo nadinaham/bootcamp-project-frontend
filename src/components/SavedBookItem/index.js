@@ -4,6 +4,7 @@ import { Text } from './styles'
 import { DELETE_FROM_SAVED } from './graphql'
 import { GET_SAVED_BOOKS_BY_USER } from '../../containers/Saved_Books/graphql'
 import jwt_decode from "jwt-decode"
+import ButtonComponent from '../ButtonComponent'
 
 
 
@@ -56,12 +57,7 @@ const SavedBookItem = prop => {
       <td><Text>{prop.title}</Text></td>
       <td><Text>{prop.author}</Text></td>
       <td>
-        <button
-          type="submit"
-          onClick={() => { setEverything(prop.bookID) }}
-        >
-        Delete
-        </button>
+        <ButtonComponent title="Delete" onClick={() => { setEverything(prop.bookID) }}/>
       </td>
     </tr>
   )

@@ -4,6 +4,7 @@ import { Text } from './styles'
 import { DELETE_FROM_ALREADY_READ } from './graphql'
 import { GET_READ_BOOKS_BY_USER } from '../../containers/AlreadyRead/graphql'
 import jwt_decode from "jwt-decode"
+import ButtonComponent from '../ButtonComponent'
 
 
 
@@ -55,13 +56,7 @@ const BookItem = prop => {
     <tr>
       <td><Text>{prop.title}</Text></td>
       <td><Text>{prop.author}</Text></td>
-      <td>
-        <button
-          type="submit"
-          onClick={() => { setEverything(prop.bookID) }}
-        >
-        Delete
-        </button>
+      <td><ButtonComponent title="Delete" onClick={() => { setEverything(prop.bookID) }}/>
       </td>
     </tr>
   )

@@ -7,6 +7,7 @@ import { ADD_TO_SAVED } from './graphql'
 import { GET_READ_BOOKS_BY_USER } from '../../containers/AlreadyRead/graphql'
 import {GET_SAVED_BOOKS_BY_USER} from '../../containers/Saved_Books/graphql'
 import LoadingComponent from '../LoadingComponent'
+import ButtonComponent from '../ButtonComponent'
 
 const style = arr => {
   try {
@@ -147,13 +148,7 @@ const Recommend = () => {
                 <tr>
                   <td>{item[0]}</td>
                   <td>{style(item[1])}</td>
-                  <td>
-                    <button
-                      type="submit"
-                      onClick={() => { setEverything(item[0], style(item[1]), item[2]) }}
-                    >
-                        Add
-                    </button>
+                  <td><ButtonComponent title="Add" onClick={() => { setEverything(item[0], style(item[1]), item[2]) }}/>
                   </td>
                 </tr>
               ))}

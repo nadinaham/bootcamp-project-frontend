@@ -9,6 +9,8 @@ export const Button = styled.button`
   color: ${props => props.theme.colors.white}
   text-transform: uppercase;
   margin: 10px 0px;
+  margin-left: 40%;
+  margin-right: 40%;
   cursor: pointer;
   box-shadow: 0px 2px 2px lightgray;
   transition: ease background-color 250ms;

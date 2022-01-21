@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button } from './styles'
 
-const ButtonComponent = ({color, funct, title}) => {
+const ButtonComponent = (props) => {
   return (
     <>
-      <Button onClick={funct}>
-        {title}
+      <Button onClick={props.onClick}>
+        {props.title}
       </Button>
     </>
   )

@@ -50,7 +50,7 @@ const Login = () => {
       <FlexContainer>
         <Input placeholder="password" type="password" name="pass" value={pass} onChange={e => { setPass(e.target.value); setError('') }} />
       </FlexContainer>
-      <button onClick={() => login()}>Log In!</button>
+      <ButtonComponent title="Log In!" onClick={() => login()}/>
       <p>{errorMsg}</p>
     </>
   )
