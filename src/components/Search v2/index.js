@@ -16,6 +16,8 @@ const UserSearch = props => {
 
   const [followedUserID, setID] = useState('')
 
+  const [startUp, setStartUp] = useState(true)
+
   const token = localStorage.getItem('token')
   const followingUserID = String(jwt_decode(token).id)
   console.log(followingUserID)
@@ -56,9 +58,33 @@ const UserSearch = props => {
     })
   }
 
+  if(startUp) {
+    return (
+      <Container>
+        <div>
+          <Header>{props.header}</Header>
+          <SubHeader>{props.subHeader}</SubHeader>
+        </div>
+
+        <form
+          onSubmit={e => {
+            e.preventDefault()
+            setQuery(search)
+            setStartUp(false)
+          }}
+        >
+          <InputContainer>
+            <input type="search" placeholder={props.desc} onChange={e => setSearch(e.target.value)} />
+          </InputContainer>
+          <Button content="Search" />
+        </form>
+      </Container>
+    )
+  }
+
   if (loading) {
     return <Container><Text>Loading...</Text></Container>
-  } if (error) {
+  } if (error && !startUp) {
     return (
       <Container>
         <div>

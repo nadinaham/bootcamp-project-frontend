@@ -125,7 +125,7 @@ const Recommend = () => {
       {error === true ? (<h4>Bruh no books big sad very bad</h4>)
         : (
           <table>
-            <tbody>
+            <thead>
               <tr>
                 <td>
                   <Text>Title</Text>
@@ -133,7 +133,12 @@ const Recommend = () => {
                 <td>
                   <Text>Authors</Text>
                 </td>
+                <td>
+                  <Text>Add to Saved</Text>
+                </td>
               </tr>
+            </thead>
+            <tbody>
               {filtered.map(item => (
                 <tr>
                   <td>{item[0]}</td>
