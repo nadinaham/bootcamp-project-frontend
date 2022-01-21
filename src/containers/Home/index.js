@@ -2,6 +2,7 @@ import React from 'react'
 import Saved_Books from '../Saved_Books'
 import Search from '../../components/Search v3'
 import NavComponent from '../../components/NavComponent'
+import { useHistory } from 'react-router-dom'
 
 const Home = () => {
   return (

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Background = styled.body`
     background-color: ${props => props.theme.colors.llblue};
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     z-index: -1; `
 
@@ -14,7 +14,7 @@ export const Container = styled.div`
 `
 
 export const Card = styled.div`
-  height: 80vh;
+  min-height: 80vh;
   padding-bottom: 5vh;
   width: 70%;
   margin-top: 30px;

@@ -9,7 +9,6 @@ export const Text = styled.h1`
 `
 
 export const Container = styled.div`
-  height: 75vh;
   width: 100%;
   border-radius: 20px;
   background-color: ${props => props.theme.colors.main}
@@ -20,7 +19,6 @@ export const Container = styled.div`
   text-align: center;
   z-index: 1;
   table{
-    max-height: 90%;
     margin-left: 5%;
     width: 90%;
     max-width: 90%;
@@ -42,7 +40,6 @@ export const Container = styled.div`
         text-overflow: ellipsis;
         white-space: nowrap;
         text-align:center;
-        border-left: thin solid ${props => props.theme.colors.brown}
         h2{
           text-align:center;
         }
@@ -51,6 +48,11 @@ export const Container = styled.div`
     tbody{
       max-width: 90%;
       border-radius: 20px;
+      tr{
+        td{
+          border-left: thin solid ${props => props.theme.colors.brown}
+        }
+      }
       tr:nth-of-type(even) {
       background-color: ${props => props.theme.colors.lightheader};
     }

@@ -40,12 +40,22 @@ const FollowTableP2 = (prop) => {
 
 const Follows = () => {
   const history = useHistory()
-  const token = localStorage.getItem('token')
+  let token = localStorage.getItem('token')
   if (!token) {
     history.push('/')
+    token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxOTJkN2RlLTEyNDctNDc0OS1iMDU5LTllODM5ODk0ZDEyNiIsImlhdCI6MTY0Mjc4MTIyNH0.hzGDNwACQRazjeGc8g1mZooYS7_Bm_x45e2Ebv8BD6g'
   }
   const ID = jwt_decode(token).id
-
+  const content = (
+      <>
+        <UserSearch header="User Search" subHeader="Search for the email of other users!" desc="e.g. example@example.com" />
+        
+        <FollowTableP2 id={ID}/>
+        <hr></hr>
+        <FollowTableP1 id={ID}/>
+      </>
+  )
+      /*
   const content1 = (
     <>
       <UserSearch header="User Search" subHeader="Search for the email of other users!" desc="e.g. example@example.com" />
@@ -57,11 +67,12 @@ const Follows = () => {
       <FollowTableP1 id={ID}/>
     </>
   )
+  <CardComponent content={content2} />*/
   return (
     <>
       <NavComponent />
-      <CardComponent content={content1} />
-      <CardComponent content={content2} />
+      <CardComponent content={content} />
+      
     </>
   )
 }
