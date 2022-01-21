@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Text } from './styles'
-import BookItem from '../BookItem'
+import SavedBookItem from '../SavedBookItem'
 
 const Saved_BooksTable = (props) => {
   if (props.data.savedByUser.length === 0)
@@ -21,7 +21,7 @@ const Saved_BooksTable = (props) => {
         </thead>
         <tbody>
           {props.data.savedByUser.map(saved => (
-            <BookItem key={saved.id} userID={saved.userID} bookID={saved.bookID} title={saved.title} author={saved.author}/>
+            <SavedBookItem key={saved.id} userID={saved.userID} bookID={saved.bookID} title={saved.title} author={saved.author}/>
           ))}
     </tbody>
   </table>

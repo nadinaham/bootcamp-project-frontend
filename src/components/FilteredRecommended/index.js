@@ -3,6 +3,8 @@ import { useQuery, useMutation } from '@apollo/react-hooks'
 import { Text, Container } from './styles'
 import { ADD_TO_SAVED } from './graphql'
 import { GET_READ_BOOKS_BY_USER } from '../../containers/AlreadyRead/graphql'
+import jwt_decode from "jwt-decode"
+import {GET_SAVED_BOOKS_BY_USER} from '../../containers/Saved_Books/graphql'
 
 const style = arr => {
   try {
@@ -19,6 +21,9 @@ const style = arr => {
 
 const getRandomInt = max => Math.floor(Math.random() * max)
 
+const token = localStorage.getItem('token')
+const ID = jwt_decode(token).id
+
 const Recommend = () => {
   const [bookID, setBook] = useState('')
   const [title, setTitle] = useState('')
@@ -28,7 +33,7 @@ const Recommend = () => {
   const [error, setError] = useState(false)
 
   const { loading, error: thisError, data } = useQuery(GET_READ_BOOKS_BY_USER, {
-    variables: { userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119' },
+    variables: { userID: ID },
   })
 
   useEffect(() => {
@@ -37,7 +42,6 @@ const Recommend = () => {
       const allAuthorsString = 'test' // ERROR HERE FROM .author data.user_read_books[getRandomInt(data.user_read_books.length)].author
       const allAuthorsArray = allAuthorsString.split(', ')
       const randAuthor = allAuthorsArray[getRandomInt(allAuthorsArray.length)]
-      console.log(randAuthor)
       async function fetchBookList() {
         try {
           const response = await fetch(
@@ -58,7 +62,7 @@ const Recommend = () => {
   const [handleAddAlready, { loading: thisLoading, error: thisThisError }] = useMutation(ADD_TO_SAVED, {
     variables: {
       input: {
-        userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119',
+        userID: ID,
         bookID,
         title,
         author,
@@ -66,6 +70,7 @@ const Recommend = () => {
     },
     onCompleted: data => console.log('done', data),
     onError: err => console.log('error ', err),
+    refetchQueries: () => [{ query: GET_SAVED_BOOKS_BY_USER, variables: {userID: ID} }],
     update: (client, { data: { handleAddAlready } }) => {
       try {
         const data = client.readQuery({ query: GET_READ_BOOKS_BY_USER })
