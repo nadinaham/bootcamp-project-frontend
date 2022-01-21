@@ -7,8 +7,6 @@ import { GET_READ_BOOKS_BY_USER, ADD_TO_ALREADY_READ } from './graphql'
 import AlreadyReadTable from '../../components/AlreadyReadTable'
 import Search from '../../components/Search v3'
 import { useHistory } from 'react-router-dom'
-import NavComponent from '../../components/NavComponent'
-import CardComponent from '../../components/CardComponent'
 import jwt_decode from "jwt-decode"
 
 
@@ -54,8 +52,8 @@ const AlreadyRead = () => {
   // if (loading) return 'Loading...'
   // if (error) return `Error: ${error}`
 
-  if (queryLoading) return <LoadingComponent/>
-  if (queryError) return `Error: ${queryError}`
+  // if (queryLoading) return <LoadingComponent/>
+  // if (queryError) return `Error: ${queryError}`
   // const [handleDeleteAlready] = useMutation(ADD_FRIEND, {
   //   update: (client, { data: { addFriend } }) => {
   //   try {
