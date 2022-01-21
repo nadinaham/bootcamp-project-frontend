@@ -7,6 +7,7 @@ import CardComponent from '../../components/CardComponent'
 import { GET_SAVED_BOOKS_BY_USER } from './graphql'
 import Saved_BooksTable from '../../components/Saved_BooksTable'
 import NavComponent from '../../components/NavComponent'
+import Search from '../../components/Search v3'
 
 
 const Saved_Books = () => {
@@ -25,6 +26,7 @@ const Saved_Books = () => {
   }
   const content = (
     <>
+      <Search header="Book Search" subHeader="What Books have you Read?" desc="e.g. Harry Potter or Charles Dickens" />
       <Text>Saved Books:</Text>
       <Saved_BooksTable data={data} />
     </>
