@@ -5,6 +5,11 @@ import NavComponent from '../../components/NavComponent'
 import { useHistory } from 'react-router-dom'
 
 const Home = () => {
+  const history = useHistory()
+  let token = localStorage.getItem('token')
+  if(!token){
+      history.push('/login')
+  }
   return (
     <> 
       <NavComponent />

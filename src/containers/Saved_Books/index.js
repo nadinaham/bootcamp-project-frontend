@@ -11,9 +11,10 @@ import NavComponent from '../../components/NavComponent'
 
 const Saved_Books = () => {
   const history = useHistory()
-  const token = localStorage.getItem('token')
+  let token = localStorage.getItem('token')
   if (!token) {
     history.push('/')
+    token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxOTJkN2RlLTEyNDctNDc0OS1iMDU5LTllODM5ODk0ZDEyNiIsImlhdCI6MTY0Mjc4MTIyNH0.hzGDNwACQRazjeGc8g1mZooYS7_Bm_x45e2Ebv8BD6g'
   }
   const ID = jwt_decode(token).id
   const { loading, error, data } = useQuery(GET_SAVED_BOOKS_BY_USER, { variables: { userID: ID } })
