@@ -10,6 +10,7 @@ const NavComponent = ( input ) => {
   }
   const logout = () => {
     localStorage.clear()
+    history.push('/')
   }
   return(
     <>
