@@ -9,7 +9,6 @@ export const Text = styled.h1`
 `
 
 export const Container = styled.div`
-  height: 75vh;
   width: 100%;
   border-radius: 20px;
   background-color: ${props => props.theme.colors.main}

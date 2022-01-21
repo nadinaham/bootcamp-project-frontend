@@ -89,6 +89,9 @@ const AlreadyRead = () => {
   const content = (
     <>
       <Search header="Book Search" subHeader="Search for books by title or author!" desc="e.g. Harry Potter or Charles Dickens" />
+      <AlreadyReadTable
+        data={data}
+      />
     </>
   )
   const content2 = (
@@ -104,7 +107,6 @@ const AlreadyRead = () => {
     <>
       <NavComponent/>
       <CardComponent content = {content} />
-      <CardComponent content = {content2} />
     </>
   )
 
