@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { Text, Container } from './styles'
-import GET_USER_READ_BOOKS from './graphql'
-import { GET_READ_BOOKS_BY_USER, ADD_TO_ALREADY_READ } from '../../containers/AlreadyRead/graphql'
-
+import { ADD_TO_SAVED } from './graphql'
 
 const style = arr => {
   try {
@@ -28,7 +26,7 @@ const Recommend = () => {
   const [result, setResult] = useState([])
   const [error, setError] = useState(false)
 
-  const { loading, error: thisError, data } = useQuery(GET_USER_READ_BOOKS, {
+  const { loading, error: thisError, data } = useQuery(ADD_TO_SAVED, {
     variables: { userID: 'a4e7faf4-3d4b-4124-b221-b46fbe4ec119' },
   })
 
