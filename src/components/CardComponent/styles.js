@@ -23,7 +23,7 @@ export const Card = styled.div`
   background-color: ${props => props.theme.colors.main}
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: flex-start; 
   gap: 20px;
   text-align: center;
   z-index: 1;
