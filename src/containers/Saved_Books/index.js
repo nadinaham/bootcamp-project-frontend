@@ -8,6 +8,7 @@ import { GET_SAVED_BOOKS_BY_USER } from './graphql'
 import Saved_BooksTable from '../../components/Saved_BooksTable'
 import NavComponent from '../../components/NavComponent'
 import Search from '../../components/Search v3'
+import LoadingComponent from '../../components/LoadingComponent'
 
 
 const Saved_Books = () => {
@@ -20,7 +21,7 @@ const Saved_Books = () => {
   const ID = jwt_decode(token).id
   const { loading, error, data } = useQuery(GET_SAVED_BOOKS_BY_USER, { variables: { userID: ID } })
   if (loading) {
-    return <Container><Text>Loading...</Text></Container>
+    return <LoadingComponent/>
   } if (error) {
     return <Container><Text>Error!</Text></Container>
   }

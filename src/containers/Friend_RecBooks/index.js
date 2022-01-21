@@ -5,6 +5,7 @@ import { GET_FRIEND_BOOKS_BY_USER } from './graphql'
 import Friend_RecBooksTable from '../../components/Friend_RecBooksTable'
 import { useHistory } from 'react-router-dom'
 import jwt_decode from "jwt-decode"
+import LoadingComponent from '../../components/LoadingComponent'
 
 
 const Friend_RecBooks = () => {
@@ -19,7 +20,7 @@ const Friend_RecBooks = () => {
         variables: {recipientID: ID}})
     if (loading) 
     {
-        return <Container><Text>Loading...</Text></Container>
+        return <LoadingComponent/>
     } else if (error)
     {
         return <Container><Text>Error!</Text></Container>

@@ -8,6 +8,7 @@ import AlreadyReadTable from '../../components/AlreadyReadTable'
 import Search from '../../components/Search v3'
 import { useHistory } from 'react-router-dom'
 import jwt_decode from "jwt-decode"
+import LoadingComponent from '../../components/LoadingComponent'
 
 
 const AlreadyRead = () => {
@@ -28,7 +29,7 @@ const AlreadyRead = () => {
     variables: { userID: ID },
   })
   if(loading){
-    return <Text>Loading...</Text>
+    return <LoadingComponent/>
   } else if(error){
     return <Text>Error!</Text>
   }
