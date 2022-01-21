@@ -137,6 +137,9 @@ const UserSearch = props => {
             <th>
               <TableHeader>Last Name</TableHeader>
             </th>
+            <th>
+              <TableHeader>Add</TableHeader>
+            </th>
           </HeaderRow>
         </thead>
         <tbody>
